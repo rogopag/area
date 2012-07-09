@@ -1,14 +1,12 @@
 <div id="sidebarLeft">
 <?php 
-include('dbconnect.php');
-
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:null;
 if ( is_page(3) ){
 	echo '<div class="forums">';
 	echo '<h2 class="green">Forum</h2>';
 	$dbQuery = "SELECT bb_posts.topic_id, bb_posts.forum_id, bb_posts.poster_id, bb_posts.post_time, bb_posts.post_id, bb_posts.post_text, bb_forums.forum_id, bb_forums.forum_name, bb_forums.posts,bb_topics.topic_title, bb_topics.topic_id, bb_topics.topic_last_poster_name  FROM bb_posts, bb_forums, bb_topics WHERE bb_posts.forum_id = bb_forums.forum_id AND bb_topics.topic_id = bb_posts.topic_id AND post_status = '0' ORDER BY post_time DESC LIMIT 0,2";
-	$forumsResult = mysql_query($dbQuery, $local_dbh) or die(mysql_error());
-	while ($topics = mysql_fetch_array($forumsResult)){
+	$forumsResult = $wpdb->get_results($dbQuery, ARRAY_A) or die(mysql_error());
+	foreach ( $forumsResult as $topics ){
 		$topicContent =  $topics['post_text'];
 		$forumName =    $topics['forum_name'];
 		//$authorFirst =  $topics['topic_poster_name'];
@@ -45,9 +43,9 @@ if ( is_page(3) ){
 	$link = $post->guid;
 	$author = $post->post_author;
 	$autQuery = "SELECT user_nicename FROM wp_users WHERE ID ='$author'";
-	$myResultAuth =mysql_query($autQuery, $local_dbh);
-	$myRowAuth = mysql_fetch_row($myResultAuth);
-	$myAuth= $myRowAuth[0];
+	
+	$myRowAuth = $wpdb->get_var($autQuery);
+	$myAuth = $myRowAuth;
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = htmlspecialchars($shortContentText);
