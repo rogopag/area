@@ -4,7 +4,7 @@ Template name: Rassegna Stampa
 */
 get_header(); 
 query_posts( array( 'cat' => 170 ) );
-//add comment stefano
+//add comment stefano, commento di prova
 ?>
 
 <div id="content">
