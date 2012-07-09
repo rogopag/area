@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(is_page_template('videos.php')):
 ?> 
 <div id="videoSidebar" class="videoSidebar">
@@ -68,8 +68,8 @@ if (is_search() || is_page(3) || is_page("124")){
 	echo '<div class="boxesSecondLine">';
 
 	$dbQuery = "SELECT eventTitle, eventLocation, eventDescription, eventStartDate, postID FROM wp_eventscalendar_main WHERE accessLevel='public' ORDER BY eventStartDate DESC LIMIT 0,3";
-	$eventsResult = mysql_query($dbQuery, $local_dbh);
-	while ($events = mysql_fetch_array($eventsResult)){
+	$eventsResult = $wpdb->get_results($dbQuery, ARRAY_A);
+	foreach ($eventsResult as $events){
 		$eventTitle = stripslashes($events['eventTitle']);
 		$eventLocation = stripslashes($events['eventLocation']);
 		$eventDescription = $events['eventDescription'];
@@ -145,8 +145,8 @@ if (is_search() || is_page(3) || is_page("124")){
 	echo '<div class="boxesSecondLine">';
 
 	$dbQuery = "SELECT eventTitle, eventLocation, eventDescription, eventStartDate, postID FROM wp_eventscalendar_main WHERE accessLevel='public' ORDER BY eventStartDate DESC LIMIT 0,3";
-	$eventsResult = mysql_query($dbQuery, $local_dbh);
-	while ($events = mysql_fetch_array($eventsResult)){
+	$eventsResult = $wpdb->get_results($dbQuery, ARRAY_A);
+	foreach ( $eventsResult as $events ){
 		$eventTitle = stripslashes($events['eventTitle']);
 		$eventLocation = $events['eventLocation'];
 		$eventDescription = $events['eventDescription'];
@@ -515,12 +515,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 	$link = $post->guid;
 	$author = $post->post_author;
 	$autQuery = "SELECT user_nicename FROM wp_users WHERE ID ='$author'";
-<<<<<<< HEAD
-	$myResultAuth =mysql_query($autQuery, $local_dbh);
-	$myRowAuth = mysql_fetch_row($myResultAuth);
-=======
 	$myRowAuth = $wpdb->get_row($autQuery);
->>>>>>> Removed mysql_fetch_array calls from sidebar.php
 	$myAuth= $myRowAuth[0];
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
@@ -546,13 +541,8 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 		if($postStatus == 'publish')
 		{
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
-<<<<<<< HEAD
-			$events = mysql_query($eventQuery, $local_dbh);
-			while($event = mysql_fetch_array($events)){
-=======
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach( $events as $event){
->>>>>>> Removed mysql_fetch_array calls from sidebar.php
 				$url = $wpdb->get_var("SELECT guid FROM $wpdb->posts WHERE ID='$eventId'");
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
