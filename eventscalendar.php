@@ -20,10 +20,7 @@ get_header(); ?>
 	</div>
 				</div><?php endwhile; endif; ?>
 				<?php 
-/*$dbQuery = "SELECT postID FROM wp_eventscalendar_main WHERE accessLevel='public' ORDER BY eventStartDate DESC LIMIT 0,1";
-        $eventsResult = mysql_query($dbQuery, $local_dbh);
-        $events = mysql_fetch_row($eventsResult);
-        $postID = $events[0];*/
+
         $postID = $wpdb->get_var("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'inFocus' AND meta_value = '1' ORDER BY meta_id DESC LIMIT 0,1");
       //  echo $postID;
 $event = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID = '$postID' AND post_status='publish' ORDER BY post_date DESC LIMIT 0,1");
