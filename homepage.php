@@ -2,7 +2,6 @@
 /*
 Template Name: homepage
 */
-//echo $_SERVER['SERVER_ADDR'].' :::: '.ABSPATH;
 ?>
 <?php get_header();?>
 <div id="content">
@@ -54,10 +53,10 @@ Template Name: homepage
 		<h2 class="orange mainSecondLine"><?php the_title(); ?>
 			<span class="languages">
 			<a href="<?php bloginfo('url');?>/?page_id=204" class="otherLanguage">
-			<img src="/wp-content/uploads/uk.jpg" class="flag" alt="gb"/>
+			<img src="<?php bloginfo('url');?>/wp-content/uploads/uk.jpg" class="flag" alt="gb"/>
 			</a>
 			<a href="<?php bloginfo('url');?>/?page_id=205" class="otherLanguage">
-			<img src="/wp-content/uploads/france.jpg" class="flag" alt="fr"/>
+			<img src="<?php bloginfo('url');?>/wp-content/uploads/france.jpg" class="flag" alt="fr"/>
 			</a>
 			</span>
 			</h2>
