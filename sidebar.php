@@ -665,7 +665,6 @@ foreach ( $forumsResult as $topics ){
 	$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
 	$myURL = 'http://dito.areato.org/home/bbpress';
 	$fLength = sizeof($forumId);
-
 	echo '<div class="boxesSecondLine" style="width:390px;"><p class="about"><a href="' .$myURL. '/topic.php?id=' . $topicId . '" >'.$title.'</a>,';
 	echo ' <a href="' . $myURL . '/forum.php?id=' . $forumId . '" >'.$forumName.'</a><br />';
 	echo '<em>'.$authorLast.'</em><br />';
