@@ -23,7 +23,8 @@ a, a:hover, a:active, a:visited, a img {text-decoration:none; color:rgb(65,80,18
 .arealog{margin:29px 0px 0px -10px;padding:0px}
 .arealog img {margin:0;padding:0;}
 img.imgLogo{margin-left:20px;}
-.imgDonazioni{margin:0px 0px 30px 20px;}
+.imgDonazioni{margin:20px 0px 30px 0px;}
+.imgDonazioni form{width:130px;}
 span.donazione{font-size:12px;color:rgb(60,60,60);margin-left:12px;}
 /*****************************************
 	TOP MENU

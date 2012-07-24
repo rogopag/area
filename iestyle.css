@@ -22,7 +22,8 @@ a, a:hover, a:active, a:visited, a img {text-decoration:none; color:rgb(65,80,18
 #empty{width:100%;float:left;height:44px;}
 .arealog{margin:29px 0px 0px -10px;padding:0px}
 .arealog img {margin:0;padding:0;}
-.imgDonazioni{margin:0px 0px 30px 20px;}
+.imgDonazioni{margin:20px 0px 30px 0px;}
+.imgDonazioni form{width:130px;}
 span.donazione{font-size:12px;color:rgb(60,60,60);margin-left:12px;}
 h3.newsTitle{font-weight:bold;color:rgb(40,40,40);margin-top:5px;margin-bottom:5px;padding-top:0px;padding-bottom:0px;margin-left:0px;}
 h3.newsTitle a{font-weight:bold;color:rgb(40,40,40);}
