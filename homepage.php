@@ -1,24 +1,21 @@
 <?php
 /*
 Template Name: homepage
+
 */
 ?>
-<?php get_header();?>
+<?php 
+get_header();
+?>
 <div id="content">
-<?php include('sidebar_left.php');?>
+<?php get_template_part('sidebar_left');?>
 <div class="main">
 
 		
 
 			
-				<h2 class="orange specialOrangeIE">In evidenza
-				
-				
-				</h2>
-				
-				
-				 
-
+				<h2 class="orange specialOrangeIE">In evidenza</h2>
+			
 				<div class="entry homeFirst expander">
 						<?php	$my_query = new WP_Query("cat=64&showposts=3");
 					            while ($my_query->have_posts()) : $my_query->the_post(); 
@@ -29,17 +26,14 @@ Template Name: homepage
 						         $shortContentText = substr($shortContentText ,0, 800);     
 						         $lastSpaceOnEarth = strpos($shortContentText, ' ', 90);
 						         $shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
-						       //  $shortContentText = str_replace(".", ".", $shortContentText);
+						       
 						     echo '<span class="collapsableTitle clickTitle">'.$title.'</span>';
-						//     echo '<p class="noMargin expand">'./*$shortContentText*/ $post->post_content.' <span>[<a href="'.$link.'">...</a>]</span></p>';
+						
 							echo '<p class="noMargin expand" id="id_'.$post->ID.'">'./*$shortContentText*/ $post->post_content.'</p>';
-
-						  //   the_excerpt();
 			               		 endwhile;
 						?>			
-					<!-- <a href="/home/?page_id=2116"> --> 
+					
 					<img title="" src="http://dito.areato.org/wp-admin/" alt="" /></a>
-					<!-- <p><a href="/home/?page_id=2116"><B>Per sfogliare la mostra clicca qui...</B></p> -->
 				</div>
 
 						

@@ -141,3 +141,47 @@ function change_wp_login_url()
 }
 add_filter('login_headerurl', 'change_wp_login_url');
 ?>
+<?php // DISABLE ADMIN BAR FOR THE SAKE OF SPEED 
+if (!function_exists('disableAdminBar')) {
+
+	function disableAdminBar(){
+  
+  	remove_action( 'admin_footer', 'wp_admin_bar_render', 1000 ); // for the admin page
+    remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 ); // for the front end
+  
+    function remove_admin_bar_style_backend() {  // css override for the admin page
+      echo '<style>body.admin-bar #wpcontent, body.admin-bar #adminmenu { padding-top: 0px !important; }</style>';
+    }
+          
+    add_filter('admin_head','remove_admin_bar_style_backend');
+    
+    function remove_admin_bar_style_frontend() { // css override for the frontend
+      echo '<style type="text/css" media="screen">
+      html { margin-top: 0px !important; }
+      * html body { margin-top: 0px !important; }
+      </style>';
+    }
+    
+    add_filter('wp_head','remove_admin_bar_style_frontend', 99);
+  
+  }
+
+}
+add_action('init','disableAdminBar'); 
+
+function example_remove_dashboard_widgets() {
+	//remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
+	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+	remove_meta_box( 'meandmymac_rss_widget', 'dashboard', 'normal' );
+	remove_meta_box('dashboard_addthis', 'dashboard', 'normal');   
+	remove_meta_box( 'powerpress_dashboard_notice_1', 'dashboard', 'normal' );
+	remove_meta_box( 'powerpress_dashboard_news', 'dashboard', 'normal' );
+	remove_meta_box( 'powerpress_dashboard_stats', 'dashboard', 'normal' );
+	
+} 
+// Hoook into the 'wp_dashboard_setup' action to register our function
+add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );
+?>
