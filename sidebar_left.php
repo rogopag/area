@@ -2,40 +2,7 @@
 <?php 
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:null;
 if ( is_page(3) ){
-	echo '<div class="forums">';
-	echo '<h2 class="green">Forum</h2>';
-	$dbQuery = "SELECT bb_posts.topic_id, bb_posts.forum_id, bb_posts.poster_id, bb_posts.post_time, bb_posts.post_id, bb_posts.post_text, bb_forums.forum_id, bb_forums.forum_name, bb_forums.posts,bb_topics.topic_title, bb_topics.topic_id, bb_topics.topic_last_poster_name  FROM bb_posts, bb_forums, bb_topics WHERE bb_posts.forum_id = bb_forums.forum_id AND bb_topics.topic_id = bb_posts.topic_id AND post_status = '0' ORDER BY post_time DESC LIMIT 0,2";
-	$forumsResult = $wpdb->get_results($dbQuery, ARRAY_A) or die(mysql_error());
-	foreach ( $forumsResult as $topics ){
-		$topicContent =  $topics['post_text'];
-		$forumName =    $topics['forum_name'];
-		//$authorFirst =  $topics['topic_poster_name'];
-		$authorID =  $topics['poster_id'];
-		$authorLast = $wpdb->get_var("SELECT display_name FROM $wpdb->users WHERE ID = '$authorID'");
-		$topicId = $topics['topic_id'];
-		$forumId = $topics['forum_id'];
-		$title =  $topics['topic_title'];
-		$postNum = $topics['posts'];
-		$shortContentText =$topicContent;
-		$shortContentText = strip_tags($shortContentText);
-		$shortContentText = htmlspecialchars($shortContentText);
-		if (strlen($shortContentText) > 65) {
-			$shortContentText = substr($shortContentText ,0, 70);
-			$lastSpaceOnEarth = strrpos($shortContentText, ' ');
-			$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
-		}
-		$myURL = 'http://dito.areato.org/home/bbpress';
-		$fLength = sizeof($forumId);
-		//   echo $topicId;
-		// echo $forumId[0];
-
-		echo '<h4><a href="' .$myURL. '/topic.php?id=' . $topicId . '" >'.$title.'</a>';
-		echo '<a href="' . $myURL . '/forum.php?id=' . $forumId . '" ><em>'.$forumName.'</em></a></h4>';
-		echo '<em>'.$authorLast.'</em>';
-		echo '<p>'.$shortContentText.'<a href="' .$myURL. '/topic.php?id=' . $topicId . '" >[...]</a></p>';
-
-	}
-	echo '</div>';
+	do_action("sidebar_left_home_first_box");
 	echo '<h2 class="green">Interviste e dintorni</h2>';
 	$my_query = new WP_Query("cat=137&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();

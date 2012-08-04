@@ -33,7 +33,7 @@ get_header();
 			               		 endwhile;
 						?>			
 					
-					<img title="" src="http://dito.areato.org/wp-admin/" alt="" /></a>
+					<img title="" src="http://dito.areato.org/wp-admin/" alt="" />
 				</div>
 
 						
