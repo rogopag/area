@@ -1,13 +1,15 @@
 <div id="sidebarLeft">
-<?php 
-$currentCategory = isset($_GET['cat'])?$_GET['cat']:null;
+<?php
+global $wp;
+
+$currentCategory = isset($_GET['cat'])?$_GET['cat']:get_queried_object_id();
 if ( is_front_page() ){
 	do_action("sidebar_left_home_first_box");
 	echo '<h2 class="green">Interviste e dintorni</h2>';
 	$my_query = new WP_Query("cat=137&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$author = $post->post_author;
 	$autQuery = "SELECT user_nicename FROM wp_users WHERE ID ='$author'";
 	
@@ -58,7 +60,7 @@ elseif (in_category(55) || is_category(55)){
 	echo '<div class="questions">';
 	$my_query = new WP_Query("cat=55");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	echo '<p><a href="'.$post->guid.'">';
+	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
 	echo '</a></p>';
 	endwhile;
@@ -77,7 +79,7 @@ elseif (in_category(138)){
 	echo '<div class="questions">';
 	$my_query = new WP_Query("cat=138");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	echo '<p><a href="'.$post->guid.'">';
+	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
 	echo '</a></p>';
 	endwhile;
@@ -96,7 +98,7 @@ elseif (in_category(44)){
 	echo '<div class="questions">';
 	$my_query = new WP_Query("cat=44");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	echo '<p><a href="'.$post->guid.'">';
+	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
 	echo '</a></p>';
 	endwhile;
@@ -115,7 +117,7 @@ elseif (in_category(141)){
 	echo '<div class="questions">';
 	$my_query = new WP_Query("cat=141");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	echo '<p><a href="'.$post->guid.'">';
+	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
 	echo '</a></p>';
 	endwhile;
@@ -158,7 +160,7 @@ elseif ((is_category()) || (is_page_template('map.php')) || is_page(82) || is_pa
 		$my_query = new WP_Query("cat=$catName");
 		}
 		while ($my_query->have_posts()) : $my_query->the_post();
-		echo '<p><a href="'.$post->guid.'">';
+		echo '<p><a href="'.get_permalink($post->ID).'">';
 		the_title();
 		echo '</a></p>';
 		endwhile;
@@ -215,7 +217,7 @@ elseif ((is_single() && !in_category(4)) || (is_page() && !is_page(124)) || (is_
 	echo '<div class="questions">';
 	$my_query = new WP_Query("cat=4");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	echo '<p><a href="'.$post->guid.'">';
+	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
 	echo '</a></p>';
 	endwhile;

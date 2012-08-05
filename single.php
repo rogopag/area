@@ -42,12 +42,12 @@ if (in_category('47') || in_category('50')){
 			<div class="entry entryForSingle">
 			<h3>
 			<?php if(in_category('50')) {?>
-				<a href="<?php echo $taleAuthor->guid;?>" class="black"> <?php echo $author;?></a>
+				<a href="<?php echo get_permalink($taleAuthor->ID);?>" class="black"> <?php echo $author;?></a>
 			<?php }
 			elseif (in_category('44') || in_category('55') || in_category('47')){?>
 			<em>
             <?php the_title(); ?>
-			</em><br /><a href="<?php echo $taleAuthor->guid;?>" class="authorLink"> <?php echo $author;?></a>
+			</em><br /><a href="<?php echo get_permalink($taleAuthor->ID);?>" class="authorLink"> <?php echo $author;?></a>
 			<?php
 			} else {
 			the_title();

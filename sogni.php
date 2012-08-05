@@ -34,7 +34,7 @@ Template name:sogni
                 $taleAuthor = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE post_title = '$author' AND post_status = 'publish'");
 				?>
 				
-				<h3><em><?php the_title(); ?></em><br /><a href="<?php echo $taleAuthor->guid;?>" class="authorLink"> <?php echo $author;?> </a></h3>
+				<h3><em><?php the_title(); ?></em><br /><a href="<?php echo get_permalink($taleAuthor->ID);?>" class="authorLink"> <?php echo $author;?> </a></h3>
 				
 				
 					<?php the_content('Read the rest of this entry &raquo;'); ?>
@@ -59,12 +59,9 @@ Template name:sogni
         continue;
         update_post_caches($posts);
         } else {
-  //  $my_queries = $wpdb->get_results("SELECT ID, post_title, post_content, guid, post_parent, post_date FROM $wpdb->posts WHERE post_type = 'page' AND post_parent =71");
-  //  foreach ($my_queries as $my_query){
-         //   echo $my_query->ID;
-       //     echo $my_query->post_parent;
+
             $title = $post->post_title;
-			$link = $post->guid;
+			$link = get_permalink($post->ID);
 			$shortContentText = $post->post_content;
 			$shortContentText = strip_tags($shortContentText);
 		  $shortContentText = substr($shortContentText ,0, 800);     
@@ -85,7 +82,7 @@ Template name:sogni
             $title = explode("-", $title);
             $title = $title[0];
             }
-			$link = $post->guid;
+			$link = get_permalink($post->ID);
 			$shortContentText = $post->post_content;
 		//	$shortContentText = strip_tags($shortContentText);
 		//  $shortContentText = substr($shortContentText ,0, 800);     
@@ -106,7 +103,7 @@ Template name:sogni
 		$title = explode("-", $title);
 		$title = $title[0];
 	}
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
   	$shortContentText = substr($shortContentText ,0, 800);     

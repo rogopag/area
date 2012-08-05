@@ -71,7 +71,7 @@ if($update){
 	else {
 		update_post_caches($posts);
 		$title = $post->post_title;
-		$link = $post->guid;
+		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
 		$shortContentText = strip_tags($shortContentText);
 		$shortContentText = substr($shortContentText ,0, 800);
@@ -82,7 +82,7 @@ if($update){
 	}
 } else{
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -120,7 +120,7 @@ if($update){
 	else {
 		update_post_caches($posts);
 		$title = $post->post_title;
-		$link = $post->guid;
+		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
 		$shortContentText = strip_tags($shortContentText);
 		$shortContentText = substr($shortContentText ,0, 800);
@@ -131,7 +131,7 @@ if($update){
 	}
 } else{
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -151,7 +151,7 @@ $my_query = new WP_Query("cat=55&showposts=2");
 while ($my_query->have_posts()) : $my_query->the_post();
 update_post_caches($posts);
 $title = $post->post_title;
-$link = $post->guid;
+$link = get_permalink($post->ID);
 $shortContentText = $post->post_content;
 $shortContentText = strip_tags($shortContentText);
 $shortContentText = substr($shortContentText ,0, 800);
@@ -169,7 +169,7 @@ $my_query = new WP_Query("cat=138&showposts=2");
 while ($my_query->have_posts()) : $my_query->the_post();
 update_post_caches($posts);
 $title = $post->post_title;
-$link = $post->guid;
+$link = get_permalink($post->ID);
 $shortContentText = $post->post_content;
 $shortContentText = strip_tags($shortContentText);
 $shortContentText = substr($shortContentText ,0, 800);

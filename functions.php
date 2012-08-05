@@ -105,7 +105,7 @@ if( !function_exists('grabGlossaryTerms') )
 		//	echo $position . ' executing query ' . $myPostsQuery;
 			$glossPosts = $wpdb->get_row($myPostsQuery);
 			$title = $glossPosts->post_title;
-			$link = $glossPosts->guid;
+			$link = get_permalink($IDS);
 			$html .= '<li><a href="'.$link.'">'.$title.'</a></li>';
 		}
 		$html .= '</ul>';

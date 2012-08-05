@@ -20,7 +20,7 @@ get_header();
 						<?php	$my_query = new WP_Query("cat=64&showposts=3");
 					            while ($my_query->have_posts()) : $my_query->the_post(); 
 						       	$title = $post->post_title;
-						         $link = $post->guid;
+						         $link = get_permalink($post->id);
 						         $shortContentText = $post->post_content;
 						         $shortContentText = strip_tags($shortContentText);
 						         $shortContentText = substr($shortContentText ,0, 800);     

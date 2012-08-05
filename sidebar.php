@@ -40,7 +40,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	$my_query = new WP_Query("cat=9&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
-	//$link = $post->guid;
+	//$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -85,8 +85,8 @@ if (is_search() || is_page(3) || is_page("124")){
 		}
 		$eventLink = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID = '$postID'");
 		$linkEvent = "#";
-		if($eventLink)
-		$linkEvent = $eventLink->guid;
+		//if($eventLink)
+		$linkEvent = get_permalink($postID);
 		$eventStartDate = explode("-",$eventStartDate);
 		$eventStartDate =  date('d-m-Y',strtotime($eventStartDate[0].''.$eventStartDate[1].''.$eventStartDate[2]));
 		echo '<p><span class="smallD">'.$eventStartDate.'</span><br/>';
@@ -104,7 +104,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	while ($my_query->have_posts()) : $my_query->the_post();
 
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -125,7 +125,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	$my_query = new WP_Query("cat=9&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -158,8 +158,8 @@ if (is_search() || is_page(3) || is_page("124")){
 		$lastSpaceOnEarth = strpos($shortContentText, ' ', 20);
 		$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
 		$shortContentText = str_replace(" ", " ", $shortContentText);
-		$eventLink = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID = '$postID'");
-		$linkEvent = $eventLink->guid;
+		//$eventLink = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID = '$postID'");
+		$linkEvent = get_permalink($postID);
 		$eventStartDate = explode("-",$eventStartDate);
 		$eventStartDate =  date('d-m-Y',strtotime($eventStartDate[0].''.$eventStartDate[1].''.$eventStartDate[2]));
 		echo '<p><span class="smallD">'.$eventStartDate.'</span><br/>';
@@ -182,7 +182,7 @@ if (is_search() || is_page(3) || is_page("124")){
 
 			echo '</ul>';
 
-			echo '<p class="segnala2"><a href="http://dito.areato.org/home/?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p></div></div>';
+			echo '<p class="segnala2"><a href="'.get_bloginfo('url').'/?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p></div></div>';
 		}
 
 		displayLinks( $myCat, $class='halfBox', $close = '</div>' );
@@ -197,7 +197,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	    $my_query = new WP_Query("cat=110&showposts=10");
 	    while ($my_query->have_posts()) : $my_query->the_post(); 
 	            $title = $post->post_title;
-				$link = $post->guid;
+				$link = get_permalink($post->ID);
 				$shortContentText = $post->post_content;
 				$shortContentText = strip_tags($shortContentText);
 			  $shortContentText = substr($shortContentText ,0, 800);     
@@ -212,7 +212,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	$my_query = new WP_Query("cat=52&showposts=10");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -228,7 +228,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	$my_query = new WP_Query("cat=53&showposts=10");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -268,7 +268,7 @@ elseif (in_category('9')){
 	else {
 		update_post_caches($posts);
 		$title = $post->post_title;
-		$link = $post->guid;
+		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
 		$shortContentText = strip_tags($shortContentText);
 		$shortContentText = substr($shortContentText ,0, 800);
@@ -294,7 +294,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 	while ($my_query->have_posts()) : $my_query->the_post();
 
 		$title = $post->post_title;
-		$link = $post->guid;
+		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
 		$shortContentText = strip_tags($shortContentText);
 		$shortContentText = substr($shortContentText ,0, 800);
@@ -314,7 +314,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 		$title = explode("-", $title);
 		$title = $title[0];
 	}
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'<br/>Illustrazioni</a></div>';
 
@@ -330,7 +330,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 		$title = explode("-", $title);
 		$title = $title[0];
 	}
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
   	$shortContentText = substr($shortContentText ,0, 800);     
@@ -356,7 +356,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	else {
 		update_post_caches($posts);
 		$title = $post->post_title;
-		$link = $post->guid;
+		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
 		$shortContentText = strip_tags($shortContentText);
 		$shortContentText = substr($shortContentText ,0, 800);
@@ -377,7 +377,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	else {
 		update_post_caches($posts);
 		$title = $post->post_title;
-		$link = $post->guid;
+		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
 		$shortContentText = strip_tags($shortContentText);
 		$shortContentText = substr($shortContentText ,0, 800);
@@ -393,7 +393,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	while ($my_query->have_posts()) : $my_query->the_post();
 	update_post_caches($posts);
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -410,7 +410,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	while ($my_query->have_posts()) : $my_query->the_post();
 	update_post_caches($posts);
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
 	$shortContentText = strip_tags($shortContentText);
 	$shortContentText = substr($shortContentText ,0, 800);
@@ -428,7 +428,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 
 elseif ((is_category())  && (!is_category('43')) && (!is_category('137')) && (!is_category('138')) && (!is_category('141')) && (!is_category('47')) && (!is_category('50')) && (!is_category('142')) && (!is_category('44')) && (!is_category('54')) && (!is_category('55')) && (!is_category('56')) && (!is_category('57')) && (!is_category('45')) && (!is_category('58')) && (!is_category('59')) && (!is_category('60')) && (!is_category('61'))|| (is_single()) && (!in_category('42')) && (!in_category('43'))  && (!in_category('34')) && (!in_category('35')) && (!in_category('54')) &&(!in_category('9')) && (!in_category('49')) && (!in_category('44')) && (!in_category('48')) &&(!in_category('47')) && (!in_category('50')) && (!in_category('55')) && (!in_category('56')) && (!in_category('57')) && (!in_category('58')) && (!in_category('59')) && (!in_category('60')) && (!in_category('61')) && (!in_category('12')) && (!in_category('62')) && (!in_category('51')) && (!in_category('137')) && (!in_category('141')) && (!in_category('138')) && (!in_category('51')) && (!in_category('53')) && (!in_category('podcast')) && (!in_category('45')) && (!in_category('142')) && (!in_category('63'))|| (is_page_template('map.php')) && (!is_page_template('videos.php')) && (!is_page(357))){
 	
-	displayLinks( $_GET['cat'] );
+	displayLinks( get_queried_object_id() );
 	
 	
 	if(!is_page_template('map.php')){
@@ -512,7 +512,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 	$my_query = new WP_Query("cat=31&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
-	$link = $post->guid;
+	$link = get_permalink($post->ID);
 	$author = $post->post_author;
 	$autQuery = "SELECT user_nicename FROM wp_users WHERE ID ='$author'";
 	$myRowAuth = $wpdb->get_row($autQuery);
@@ -543,7 +543,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach( $events as $event){
-				$url = $wpdb->get_var("SELECT guid FROM $wpdb->posts WHERE ID='$eventId'");
+				$url = get_permalink($eventId->ID);
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
@@ -572,7 +572,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach($events as $event ){
-				$url = $wpdb->get_var("SELECT guid FROM $wpdb->posts WHERE ID='$eventId'");
+				$url = get_permalink($eventId->ID);
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
@@ -633,7 +633,7 @@ echo '<div class="boxesBox boxesBoxSecond"><h2 class="blue secondLine">Le pi&ugr
 $my_query = new WP_Query("cat=54&showposts=2");
 while ($my_query->have_posts()) : $my_query->the_post();
 $title = $post->post_title;
-$link = $post->guid;
+$link = get_permalink($post->ID);
 $shortContentText = $post->post_content;
 $shortContentText = strip_tags($shortContentText);
 $shortContentText = substr($shortContentText ,0, 800);
