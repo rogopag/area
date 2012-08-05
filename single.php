@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<div id="content">
-<?php include('sidebar_left.php');?>
+<?php get_template_part('sidebar_left');?>
 	<?php if (have_posts()) : while (have_posts()) : the_post(); 
 
 //////////leave this is a debug code////////////

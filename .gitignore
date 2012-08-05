@@ -6,3 +6,7 @@ dito.tmproj
 .settings/com.zend.php.javabridge.core.prefs
 
 .settings/org.eclipse.php.core.projectOptions.prefs
+
+.cache/.dataModel
+
+.cache/.wsdlDataModel

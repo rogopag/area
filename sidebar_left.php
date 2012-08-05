@@ -1,7 +1,7 @@
 <div id="sidebarLeft">
 <?php 
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:null;
-if ( is_page(3) ){
+if ( is_front_page() ){
 	do_action("sidebar_left_home_first_box");
 	echo '<h2 class="green">Interviste e dintorni</h2>';
 	$my_query = new WP_Query("cat=137&showposts=2");

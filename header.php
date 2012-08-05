@@ -53,7 +53,7 @@ if ($SF)
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/slideshow.js"></script>
 
 <?php
-if( is_page(3) )
+if( is_front_page() )
 {
 	echo "<script type=\"text/javascript\" src=\"". get_bloginfo('stylesheet_directory') ."/js/jquery.expander.js\"></script>\n";
 }
@@ -96,7 +96,7 @@ wp_head(); ?>
 
 <div class="community">
 <div class="menuItemLeft">
-<div class="com"><a href="<?php bloginfo('url');?>/bbpress/?forum=intro">Forum</a></div>
+<div class="com"><a href="<?php bloginfo('url');?>/?page_id=<?php echo  dito_mediateca_page_link();?>">Mediateca</a></div>
 <div class="com"><a href="<?php bloginfo('url');?>/?page_id=958">Interviste e dintorni</a></div>
 <div class="comLast"><a href="<?php bloginfo('url');?>/?page_id=88">Come ho fatto a...</a></div>
 </div>

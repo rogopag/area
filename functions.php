@@ -221,4 +221,20 @@ function printForumBoxes()
 	echo '</div>';
 }
 //add_action('sidebar_left_home_first_box', 'printForumBoxes');
+function dito_shortern_content( $text )
+{
+		$shortContentText = $text;
+		$shortContentText = strip_tags($shortContentText);
+		$shortContentText = htmlspecialchars($shortContentText);
+		if (strlen($shortContentText) > 65) {
+			$shortContentText = substr($shortContentText ,0, 70);
+			$lastSpaceOnEarth = strrpos($shortContentText, ' ');
+			$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
+		}
+		return $shortContentText;
+}
+function dito_mediateca_page_link()
+{
+	return ( class_exists( 'Mediateca_Init' ) ) ? Mediateca_Init::$pages[MEDIATECA_SLUG]->ID : 3;
+}
 ?>
