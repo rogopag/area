@@ -276,3 +276,5 @@ p.forForm{text-align:left;}
 .boxFullWidth ul.ulLinkLeft{padding-right:23px;}
 .boxes ul.ul_left{padding-right:23px;}
 .boxFullWidth ul li, ul.sidebarListHalf li{list-style-type:none;}
+/*////////// LARGE CONTENT BLOCK /////////////////////////////////////*/
+.main-large{width:665px;}

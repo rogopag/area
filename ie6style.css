@@ -273,3 +273,5 @@ div.tubepress_sidebar{width:360px;margin:0px;padding:0px;}
 .boxFullWidth ul, ul.sidebarListHalf{width:170px;float:left;}
 .boxFullWidth ul.ulLinkLeft{padding-right:23px;}
 .boxes ul.ul_left{padding-right:23px;}
+/*////////// LARGE CONTENT BLOCK /////////////////////////////////////*/
+.main-large{width:665px;}

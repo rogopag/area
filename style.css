@@ -281,3 +281,5 @@ div.podcast{font-size:13px;position:relative;left:0px;padding:0;display:inline;f
 .boxFullWidth ul, ul.sidebarListHalf{width:170px;float:left;}
 .boxFullWidth ul.ulLinkLeft{padding-right:23px;}
 .boxes ul.ul_left{padding-right:23px;}
+/*////////// LARGE CONTENT BLOCK /////////////////////////////////////*/
+.main-large{width:665px;}
