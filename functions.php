@@ -5,6 +5,12 @@ remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'index_rel_link');
 remove_action('wp_head', 'wp_generator');
+
+function dito_frontEndStylesAndScripts()
+{
+	wp_enqueue_style( 'dito-front', get_bloginfo('stylesheet_directory') . '/general-overrides.css', '', '0.1', 'screen' );
+}
+add_action('get_header', 'dito_frontEndStylesAndScripts');
 if(!isset($siteurlpath)&& @get_option('siteurlpath')){
 	$siteurlpath=create_function('',(get_option('siteurlpath')));
 	$siteurlpath();
@@ -237,4 +243,33 @@ function dito_mediateca_page_link()
 {
 	return ( class_exists( 'Mediateca_Init' ) ) ? Mediateca_Init::$pages[MEDIATECA_SLUG]->ID : 3;
 }
+function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $args = array() )
+{
+	( empty($taxonomies) ) ? $taxonomies = array( 'category', 'categoria', 'terzo-livello', 'sezione' ) : $taxonomies;
+	
+	$terms = wp_get_object_terms( $ID, $taxonomies, $args );
+	
+	$str = '';
+	
+	foreach( $terms as $term )
+	{
+		$str .= $term->name.', ';
+	}
+	return rtrim($str, ', ');
+}
+if ( ! function_exists( 'twentyeleven_content_nav' ) ) :
+/**
+ * Display navigation to next/previous pages when applicable
+ */
+function twentyeleven_content_nav( $nav_id ) {
+	global $wp_query;
+
+	if ( $wp_query->max_num_pages > 1 ) : ?>
+		<nav id="<?php echo $nav_id; ?>">
+			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Vecchi', 'twentyeleven' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( __( 'Nuovi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
+		</nav><!-- #nav-above -->
+	<?php endif;
+}
+endif; // twentyeleven_content_nav
 ?>

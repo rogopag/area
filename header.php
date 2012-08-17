@@ -9,7 +9,7 @@ $mapLoaded = isset($mapLoaded)?$mapLoaded:"";
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-<link type="image/x-icon" href="http://dito.areato.org//wp-content/themes/area/favicon.ico" rel="shortcut icon" />
+<link type="image/x-icon" href="<?php bloginfo('url') ?>>/wp-content/themes/area/favicon.ico" rel="shortcut icon" />
 <title><?php bloginfo('name'); ?> <?php if ( is_single() ) { ?> &raquo; Blog Archive <?php } ?> <?php wp_title(); ?></title>       
 <?php
 if ($SF)
@@ -104,14 +104,14 @@ wp_head(); ?>
 
 <div class="percorsi">
 <div class="menuItemLeft">
-<div class="per"><a href="<?php bloginfo('url');?>/?cat=3">Carte in regola</a></div>
-<div class="per"><a href="<?php bloginfo('url');?>/?cat=4">Sanit&agrave; e servizi</a></div>
-<div class="perLast"><a href="<?php bloginfo('url');?>/?cat=5">Benefici e permessi</a></div>
+<div class="per"><a href="<?php bloginfo('url');?>/category/carte-in-regola">Carte in regola</a></div>
+<div class="per"><a href="<?php bloginfo('url');?>/category/servizi">Sanit&agrave; e servizi</a></div>
+<div class="perLast"><a href="<?php bloginfo('url');?>/category/benefici-e-permessi">Benefici e permessi</a></div>
 </div>
 <div class="menuItemRight">
-<div class="per"><a href="<?php bloginfo('url');?>/?cat=6">Trasporti</a></div>
-<div class="per"><a href="<?php bloginfo('url');?>/?cat=7">Scuola</a></div>
-<div class="perLast"><a href="<?php bloginfo('url');?>/?cat=8">Sport e tempo libero</a></div>
+<div class="per"><a href="<?php bloginfo('url');?>/category/trasporti">Trasporti</a></div>
+<div class="per"><a href="<?php bloginfo('url');?>/category/scuola">Scuola</a></div>
+<div class="perLast"><a href="<?php bloginfo('url');?>/category/sport-e-tempo-libero">Sport e tempo libero</a></div>
 </div>
 </div>
 

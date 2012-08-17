@@ -21,7 +21,7 @@ $user = new WP_User($current_user->ID);
 
 <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">
 <div><input type="text" value="cerca" name="s" id="s" />
-<input type="image" id="searchsubmit" src="http://dito.areato.org/wp-content/themes/area/imgs/search.gif" name="submit" />
+<input type="image" id="searchsubmit" src="<?php bloginfo('url'); ?>/wp-content/themes/area/imgs/search.gif" name="submit" />
 </div>
 </form>
 
