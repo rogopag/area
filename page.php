@@ -2,7 +2,7 @@
 
 	<div id="content">
 	
-<?php get_template_part('sidebar_left.php');?>
+<?php include_once('sidebar_left.php');?>
 <div class="main forIE">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		<h2 class="orange"><?php the_title(); ?></h2>
