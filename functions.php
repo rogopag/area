@@ -156,7 +156,10 @@ if (!function_exists('disableAdminBar')) {
     remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 ); // for the front end
   
     function remove_admin_bar_style_backend() {  // css override for the admin page
-      echo '<style>body.admin-bar #wpcontent, body.admin-bar #adminmenu { padding-top: 0px !important; }</style>';
+      echo '<style>
+      html.wp-toolbar{padding-top:0;}
+      body.admin-bar #wpcontent, body.admin-bar #adminmenu { padding-top: 0px !important; }
+      </style>';
     }
           
     add_filter('admin_head','remove_admin_bar_style_backend');
