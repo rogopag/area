@@ -275,4 +275,5 @@ function twentyeleven_content_nav( $nav_id ) {
 	<?php endif;
 }
 endif; // twentyeleven_content_nav
+add_theme_support( 'post-thumbnails' );
 ?>
