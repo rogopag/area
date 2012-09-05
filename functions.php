@@ -276,4 +276,28 @@ function twentyeleven_content_nav( $nav_id ) {
 }
 endif; // twentyeleven_content_nav
 add_theme_support( 'post-thumbnails' );
+
+// for debug purposes only
+if( !function_exists('show_template') )
+{
+	//add_action('wp_head', 'show_template');
+	function show_template() {
+	    global $template;
+	    echo basename($template);
+	}
+}
+function ditoDoExerpt()
+{
+	if( function_exists('the_advanced_excerpt') )
+	the_advanced_excerpt('length=150&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
+}
+//removes empty tags from the_content
+if( !function_exists('remove_empty_p') )
+{
+	add_filter('the_content', 'remove_empty_p', 20, 1);
+	function remove_empty_p($content){
+		$content = force_balance_tags($content);
+		return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
+	}
+}
 ?>
