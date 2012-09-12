@@ -300,4 +300,7 @@ if( !function_exists('remove_empty_p') )
 		return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
 	}
 }
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'mediateca-thumb', 100, 75, true ); //(cropped)
+}
 ?>
