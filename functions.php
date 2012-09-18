@@ -250,13 +250,19 @@ function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $args = 
 {
 	( empty($taxonomies) ) ? $taxonomies = get_object_taxonomies( get_post_type( $ID ) ) : $taxonomies;
 	
+	if( in_array( 'eta', $taxonomies ) ){
+		$key = array_search( 'eta', $taxonomies );
+		unset( $taxonomies[$key] );
+	}
+	
 	$terms = wp_get_object_terms( $ID, $taxonomies, $args );
 	
 	$str = '';
 	
 	foreach( $terms as $term )
 	{
-		$str .= $term->name.', ';
+		if( $term->name != 'Altro' )
+		$str .= '<a href="'.get_bloginfo('url').'/'.$term->taxonomy.'/'.$term->slug.'">'.$term->name.'</a>, ';
 	}
 	return rtrim($str, ', ');
 }
