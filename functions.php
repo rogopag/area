@@ -248,7 +248,7 @@ function dito_mediateca_page_link()
 }
 function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $args = array() )
 {
-	( empty($taxonomies) ) ? $taxonomies = array( 'category', 'categoria', 'terzo-livello', 'sezione' ) : $taxonomies;
+	( empty($taxonomies) ) ? $taxonomies = get_object_taxonomies( get_post_type( $ID ) ) : $taxonomies;
 	
 	$terms = wp_get_object_terms( $ID, $taxonomies, $args );
 	
