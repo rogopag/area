@@ -246,23 +246,30 @@ function dito_mediateca_page_link()
 {
 	return ( class_exists( 'Mediateca_Init' ) ) ? Mediateca_Init::$pages[MEDIATECA_SLUG]->ID : 3;
 }
-function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $args = array() )
+function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $excludes = array(), $args = array() )
 {
 	( empty($taxonomies) ) ? $taxonomies = get_object_taxonomies( get_post_type( $ID ) ) : $taxonomies;
 	
-	if( in_array( 'eta', $taxonomies ) ){
-		$key = array_search( 'eta', $taxonomies );
-		unset( $taxonomies[$key] );
+	if( $excludes ) 
+	{
+		foreach( $excludes as $exclude )
+		{
+			$key = array_search( $exclude, $taxonomies );
+			unset( $taxonomies[$key] );
+		}
 	}
 	
 	$terms = wp_get_object_terms( $ID, $taxonomies, $args );
 	
 	$str = '';
 	
-	foreach( $terms as $term )
+	if( $terms )
 	{
-		if( $term->name != 'Altro' )
-		$str .= '<a href="'.get_bloginfo('url').'/'.$term->taxonomy.'/'.$term->slug.'">'.$term->name.'</a>, ';
+		foreach( $terms as $term )
+		{
+			//if( $term->name != 'Altro' )
+			$str .= '<a href="'.get_bloginfo('url').'/'.$term->taxonomy.'/'.$term->slug.'">'.$term->name.'</a>, ';
+		}
 	}
 	return rtrim($str, ', ');
 }
