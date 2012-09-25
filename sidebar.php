@@ -305,7 +305,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 
 	endwhile;
 
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=47" class="segnala">Tutti i racconti</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'?cat=47" class="segnala">Tutti i racconti</a></p></div>';
 	echo '<h2 class="blue secondLine">In cornice</h2>';
 	$my_query = new WP_Query("cat=50&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -319,7 +319,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 	echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'<br/>Illustrazioni</a></div>';
 
 	endwhile;
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=50" class="segnala">Tutte le illustrazioni</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'?cat=50" class="segnala">Tutte le illustrazioni</a></p></div>';
 	$my_query = new WP_Query("cat=142&showposts=2");
 //	if($my_query->have_posts()):
 	echo '<h2 class="blue secondLine">Le vostre pagine</h2>';
@@ -366,7 +366,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 		echo  '<div class="boxes"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 	}
 	endwhile;
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=141" class="segnala">Tutte le interviste</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'?cat=141" class="segnala">Tutte le interviste</a></p></div>';
 	echo '<h2 class="blue secondLine">Recensioni</h2>';
 	$my_query = new WP_Query("cat=44&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -387,7 +387,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 		echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 	}
 	endwhile;
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=44" class="segnala">Tutte le recensioni</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'?cat=44" class="segnala">Tutte le recensioni</a></p></div>';
 	echo '<h2 class="blue secondLine">Studi e ricerche</h2>';
 	$my_query = new WP_Query("cat=55&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -404,7 +404,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 
 	endwhile;
 
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=55" class="segnala">Tutte le pubblicazioni</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'?cat=55" class="segnala">Tutte le pubblicazioni</a></p></div>';
 	echo '<h2 class="blue secondLine">Diario di Di.To</h2>';
 	$my_query = new WP_Query("cat=138&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -421,7 +421,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 
 	endwhile;
 
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=138" class="segnala">Tutto il Diario</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'?cat=138" class="segnala">Tutto il Diario</a></p></div>';
 
 }
 /////////PERCORSI AND GENERIC SINGLE POST OR CAT//////////////////////////////////////////////
@@ -446,7 +446,7 @@ elseif ((is_category())  && (!is_category('43')) && (!is_category('137')) && (!i
 <p><img src="<?php bloginfo('stylesheet_directory');?>/imgs/map1.jpg" alt="smallmap" /></p>
 <form id="mapform" name="mapform" method="get" action="<?php bloginfo('url');?>/map.php">
 <input type="text" name="mapsearch" value="Cerca"  id="mapsearch" />
-<input type="image" src="http://dito.areato.org/home/wp-content/themes/area/imgs/search.gif" name="submit"  id="submap" />
+<input type="image" src="<?php bloginfo('url') ?>/wp-content/themes/area/imgs/search.gif" name="submit"  id="submap" />
 </form>
 </div>
 <div class="boxesSecondLine">
@@ -461,7 +461,7 @@ $mapsLinksQuery = "SELECT * FROM g_maps WHERE mcategory_id = '$catName' ORDER BY
 $mapsLinks = $wpdb->get_results($mapsLinksQuery);
 foreach ($mapsLinks as $mapsLink){
 	$sname = $mapsLink->service;
-	echo '<a href="http://dito.areato.org/home/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
+	echo '<a href="'.get_bloginfo('url').'/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
 }
 ?>
 </p>
@@ -481,7 +481,7 @@ if( $glossaryLen > 0 )
 
 	echo '<br><br>';
 
-	echo '<p class="segnala2"><a href="http://dito.areato.org/home/?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p>';
+	echo '<p class="segnala2"><a href="'.get_bloginfo('url').'?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p>';
 	echo '</div>';
 }
 }
@@ -597,7 +597,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 <p><img src="<?php bloginfo('stylesheet_directory');?>/imgs/map1.jpg" alt="smallmap" /></p>
 <form id="mapform" name="mapform" method="get" action="<?php bloginfo('url');?>/map.php">
 <input type="text" name="mapsearch" value="Cerca"  id="mapsearch" />
-<input type="image" src="http://dito.areato.org/home/wp-content/themes/area/imgs/search.gif" name="submit"  id="submap" />
+<input type="image" src="<?php bloginfo('url'); ?>/wp-content/themes/area/imgs/search.gif" name="submit"  id="submap" />
 </form>
 </div>
 <div class="boxesSecondLine">
@@ -607,7 +607,7 @@ $mapsLinksQuery = "SELECT * FROM g_maps WHERE mcategory_id = '12' ORDER BY map_i
 $mapsLinks = $wpdb->get_results($mapsLinksQuery);
 foreach ($mapsLinks as $mapsLink){
 	$sname = $mapsLink->service;
-	echo '<a href="http://dito.areato.org/home/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
+	echo '<a href="'.get_bloginfo('url').'/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
 }
 
 ?>
