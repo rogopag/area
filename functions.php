@@ -250,7 +250,8 @@ function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $exclude
 {
 	( empty($taxonomies) ) ? $taxonomies = get_object_taxonomies( get_post_type( $ID ) ) : $taxonomies;
 	
-	if( $excludes ) 
+	
+	if( $excludes && in_array($excludes, $taxonomies) ) 
 	{
 		foreach( $excludes as $exclude )
 		{
