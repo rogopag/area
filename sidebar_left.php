@@ -5,7 +5,7 @@ global $wp;
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:get_queried_object_id();
 if ( is_front_page() ){
 	do_action("sidebar_left_home_first_box");
-	echo '<h2 class="green">Interviste e dintorni</h2>';
+/*	echo '<h2 class="green">Interviste e dintorni</h2>';
 	$my_query = new WP_Query("cat=137&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
@@ -29,7 +29,7 @@ if ( is_front_page() ){
 	echo '<h4><a href="'.$link.'">'.$title.'</a></h4>';
 	echo '<em>'.$myAuth.'</em>';
 	echo '<p>'.$shortContentText.'[<a href="'.$link.'">...</a>]</p></div>';
-	endwhile;
+	endwhile;*/
 	echo '<div class="arealog"> <a href="http://www.areato.org/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a>
 	<!-- <a href="http://www.fondazionecrt.it" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/uploads/crt.gif" class="crtGif"/></a> -->
 		
