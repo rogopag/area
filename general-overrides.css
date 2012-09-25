@@ -8,4 +8,21 @@ nav#nav-below{width:384px;padding-left:12px;font-size:12px;}
 .nav-previous{float:left;}
 .nav-next{float:right;}
 .videos{margin-top:-10px;}
-.boxesSecondLine{min-height:20px;}
+.no-padding{padding-top:0px;margin-top:0px;}
+.padding-bottom{padding-bottom:12px;}
+.segnalaRight{min-height:10px;}
+.boxes p.segnala2{padding-top:0px;}
+.boxesSecondLine{min-height:10px;}
+p.segnala2 a{font-weight:bold;}
+a.segnala, a.segnala:link, a.segnala:active, a.segnala:hover, a.segnala:visited{color:#4150B4;}
+a.title-link, a.title-link:visited{font-family: georgia;color:#4150B4;}
+.tubepress_thumb{margin-right:20px;}
+.tubepress_thumb img{padding:1px;}
+.tubepress_thumbnail_area, .tubepress_thumbs{width:584px;}
+.smallAlignRight{position:static;float:right;}
+li.widget_tubepress h2{padding-top:14px;}
+ul.videoWidget li.widget_tubepress div.tubepress_sidebar{padding-top:12px;}
+.tubepress_container{margin-bottom:0;}
+/*/////////*************/
+
+

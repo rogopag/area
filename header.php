@@ -117,14 +117,14 @@ wp_head(); ?>
 
 <div class="strumenti">
 <div class="menuItemLeft">
-<div class="strum"><a href="<?php bloginfo('url')?>/map.php">Trova servizio</a></div>
+<div class="strum"><a href="<?php bloginfo('url')?>/interviste-e-ricerche">Interviste e ricerche</a></div>
 <div class="strum"><a href="<?php bloginfo('url');?>/?page_id=71">Sogni, segni, disegni</a></div>
 <div class="strumLast"><a href="<?php bloginfo('url');?>/?page_id=124">Link utili</a></div>
 </div>
 <div class="menuItemRight">
-<div class="strum"><a href="<?php bloginfo('url');?>/?page_id=86">Eventi</a></div>
+<div class="strum"><a href="<?php bloginfo('url');?>/laboratori-e-progetti">Laboratori e progetti</a></div>
 <div class="strum"><a href="<?php bloginfo('url');?>/?page_id=957">Multimedia</a></div>
-<div class="strumLast"><a href="<?php bloginfo('url');?>/?page_id=82">News</a></div>
+<div class="strumLast"><a href="<?php bloginfo('url');?>/diario-di-di-to">Diario di Di.To</a></div>
 </div>
 </div>
 </div><!-- MENU END-->

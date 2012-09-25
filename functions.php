@@ -1,6 +1,9 @@
 <?php
 error_reporting(E_ALL); 
 ini_set("display_errors", 0);
+
+//define pages in this array to add them and add a template to them
+
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'index_rel_link');
@@ -321,5 +324,62 @@ if( !function_exists('remove_empty_p') )
 }
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'mediateca-thumb', 100, 75, true ); //(cropped)
+}
+if( !function_exists('dito_create_pages') )
+{
+	function dito_create_pages()
+	{
+		global $current_user, $dito_pages;
+		
+		//Push a page slug to add a page dynamically
+		$dito_pages = array('laboratori-e-progetti', 'interviste-e-ricerche', 'diario-di-di-to' );
+		
+		get_currentuserinfo();
+		
+		$user = $current_user;
+		
+		foreach( $dito_pages as $slug )
+		{
+			if( !get_page_by_title( ucfirst( str_replace('-', ' ', $slug) ) ) )
+			{
+				$name = ucfirst( str_replace('-', ' ', $slug) );
+				
+				$postdata = array(
+				'post_title' => __($name, MEDIATECA_TD),
+				'post_content' => __('This is your '.$name.' page!', MEDIATECA_TD),
+				'post_status' => 'publish',
+				'post_type' => 'page',
+				'post_author' => $user->ID,
+				'ping_status' => get_option('default_ping_status'), 
+				'post_name' => $slug,
+				//'post_parent' => $parent,
+				'menu_order' => 0,
+				'to_ping' =>  '',
+				'pinged' => '',
+				'post_password' => '',
+				'guid' => '',
+				'post_content_filtered' => '',
+				'post_excerpt' => '',
+				'import_id' => 0
+				);
+				wp_insert_post( $postdata, true );
+			}
+		}
+		add_filter ( 'page_template', 'dito_loadTemplates' );
+	}
+	add_action('init', 'dito_create_pages', 95);
+}
+function dito_loadTemplates( $page_template )
+{
+	global $dito_pages, $post;
+	
+	foreach( $dito_pages as $page )
+	{
+		if ( $post->post_name == $page && file_exists ( TEMPLATEPATH . '/'.$page.'-page.php' ))
+		{	
+			$page_template = TEMPLATEPATH . '/'.$page.'-page.php';
+		}
+	}
+	return $page_template;
 }
 ?>
