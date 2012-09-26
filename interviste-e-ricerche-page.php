@@ -94,7 +94,7 @@ if($update){
 }
 endwhile;
 
-echo '<div class="boxes segnalaRight"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=141" class="segnala">Tutte le interviste</a></p></div>';
+echo '<div class="boxes segnalaRight"> <p class="segnala2"><a href="'.get_category_link( 141 ).'" class="segnala">Tutte le interviste</a></p></div>';
 echo '</div>';
 
 
@@ -143,7 +143,7 @@ if($update){
 }
 endwhile;
 
-echo '<div class="boxes segnalaRight"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=44" class="segnala">Tutte le recensioni</a></p></div>';
+echo '<div class="boxes segnalaRight"> <p class="segnala2"><a href="'.get_bloginfo('url').'/?cat=44" class="segnala">Tutte le recensioni</a></p></div>';
 echo '</div>';*/
 
 echo '<div class="boxesBox boxesBoxSecond"><h2 class="blue secondLine">Studi e ricerche</h2>';
@@ -161,7 +161,7 @@ $shortContentText = str_replace(".", ".<br/>", $shortContentText);
 echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 
 endwhile;
-echo '<div class="boxesSecondLine segnalaRight"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=55" class="segnala">Tutte le pubblicazioni</a></p></div></div>';
+echo '<div class="boxesSecondLine segnalaRight"> <p class="segnala2"><a href="'.get_category_link( 55 ).'" class="segnala">Tutte le pubblicazioni</a></p></div></div>';
 
 
 /*echo '<div class="boxesBox boxesBoxSecond"><h2 class="blue secondLine">Diario di Di.To</h2>';
@@ -179,7 +179,7 @@ $shortContentText = str_replace(".", ".<br/>", $shortContentText);
 echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 
 endwhile;
-echo '<div class="boxesSecondLine segnalaRight"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=138" class="segnala">Tutto il Diario</a></p></div></div>';*/
+echo '<div class="boxesSecondLine segnalaRight"> <p class="segnala2"><a href="'.get_bloginfo('url').'/?cat=138" class="segnala">Tutto il Diario</a></p></div></div>';*/
 	?>	
 	</div>
 

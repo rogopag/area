@@ -5,7 +5,7 @@
 	<div class="wrap-center-content">
 <div class="main forIE main-large">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			<h2 class="orange main-large"><?php /*the_title();*/ echo "This page is under construction";?></h2>
+			<h2 class="orange main-large"><?php /*the_title();*/ echo "Pagina in costruzione";?></h2>
 
 
 <div class="entry intro main-large">
