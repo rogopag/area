@@ -36,7 +36,7 @@ if(is_page_template('videos.php') || in_category('podcast'))
 	wp_reset_query();
 }
 if (is_search() || is_page(3) || is_page("124")){
-	echo '<div class="boxesBox"><h2 class="blue">News</h2>';
+	echo '<div class="boxesBox"><h2 class="blue"><a href="'.get_category_link( 9 ).'" class="title-link">News</a></h2>';
 	$my_query = new WP_Query("cat=9&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	$title = $post->post_title;
@@ -60,7 +60,7 @@ if (is_search() || is_page(3) || is_page("124")){
 	</div></div>';
 	
 	
-	echo '<p><br><div class="boxesBox"><h2 class="blue secondLine"> Eventi</h2></div></p>';
+	echo '<p><br><div class="boxesBox"><h2 class="blue secondLine"><a href="'.get_permalink(86).'" class="title-link">Eventi</a></h2></div></p>';
 	echo '<div id="cWrap">';
 	sidebarEventsCalendar();
 	echo '</div>';
