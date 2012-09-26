@@ -382,4 +382,26 @@ function dito_loadTemplates( $page_template )
 	}
 	return $page_template;
 }
+function dito_doDiarioSidebar()
+{
+	global $post;
+	echo '<div class="boxesBox"><h2 class="blue">Ultime dal Diario</h2>';
+	$my_query = new WP_Query("cat=138&showposts=2");
+	while ($my_query->have_posts()) : $my_query->the_post();
+	update_post_caches($posts);
+	$title = $post->post_title;
+	$link = get_permalink($post->ID);
+	$shortContentText = $post->post_content;
+	$shortContentText = strip_tags($shortContentText);
+	$shortContentText = substr($shortContentText ,0, 800);
+	$lastSpaceOnEarth = strpos($shortContentText, '.', 10);
+	$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
+	$shortContentText = str_replace(".", ".<br/>", $shortContentText);
+	echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
+	endwhile;
+	rewind_posts();
+	if( !is_category() )
+	echo '<div class="boxesSecondLine segnalaRight"> <p class="segnala2"><a href="'.get_bloginfo('url').'/category/dito-in-missione" class="segnala">Tutto il Diario</a></p></div></div>';
+}
+add_action('do_diario_sidebar', 'dito_doDiarioSidebar');
 ?>
