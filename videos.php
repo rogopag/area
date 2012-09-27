@@ -25,7 +25,7 @@ get_header();
 // edit_post_link('Edit this entry.', '<p>', '</p>'); 
 ?>
 
-	<p class="segnala2"><a href="http://dito.areato.org/home/?page_id=1706" class="segnala">Tutti i podcast</a></p>
+	<div class="boxes" style="text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?page_id=1706" class="segnala">Tutti i podcast</a></p></div>
 
 </div>
 
