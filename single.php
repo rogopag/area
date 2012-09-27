@@ -11,7 +11,7 @@
 	?>
 		<div class="main">
 
-<h2 class="orange"><?php 
+<h2 class="orange <?php ditoLargeClass();?>"><?php 
 if (in_category('55')){
 echo 'Studi e ricerche';
 } elseif (in_category('54') ||  in_category('56')  ||  in_category('57')  ||  in_category('58')  ||  in_category('59')  ||  in_category('60') ||  in_category('61')){
@@ -39,7 +39,7 @@ if (in_category('47') || in_category('50')){
 ?></h2>
 				
 
-			<div class="entry entryForSingle">
+			<div class="entry entryForSingle <?php ditoLargeClass();?>">
 			<h3>
 			<?php if(in_category('50')) {?>
 				<a href="<?php echo get_permalink($taleAuthor->ID);?>" class="black"> <?php echo $author;?></a>
@@ -98,7 +98,9 @@ if (in_category('47') || in_category('50')){
 
 <?php endif; ?>
 </div>
-<?php get_sidebar(); ?>
+<?php
+if( !in_category('rassegna') ) 
+get_sidebar(); ?>
 	</div>
 
 <?php get_footer(); ?>
