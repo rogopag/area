@@ -31,7 +31,7 @@ if(is_page_template('videos.php') || in_category('podcast'))
 	{
 		echo '<p class="segnala2" style="float:right;padding-top:20px;padding-right:10px;font-size:13px;">';
 	}
-	echo '</div>';
+	echo 'Tutti i podcast</p></div>';
 	endif;
 	wp_reset_query();
 }
