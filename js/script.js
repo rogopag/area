@@ -523,6 +523,7 @@ function fixVideoGalleries()
 {
 	var fix = $('.tubepress_thumb').eq(3) || $('.tubepress_thumb').eq(7) || $('.tubepress_thumb').eq(11) || $('.tubepress_thumb').eq(15) || $('.tubepress_thumb').eq(19);
 	fix.css('padding-right', '0px');
+	fix.css('margin-right', '0px');
 };
 function expandLinks()
 {
