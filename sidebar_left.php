@@ -30,8 +30,8 @@ if ( is_front_page() ){
 	echo '<em>'.$myAuth.'</em>';
 	echo '<p>'.$shortContentText.'[<a href="'.$link.'">...</a>]</p></div>';
 	endwhile;*/
-	echo '<div class="arealog"> <a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a>
-	<!-- <a href="http://www.fondazionecrt.it" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/uploads/crt.gif" class="crtGif"/></a> -->
+	echo '<div class="arealog"> <a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a>
+	<!-- <a href="http://www.fondazionecrt.it" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/uploads/crt.gif" class="crtGif"/></a> -->
 		
 			 <div class="imgDonazioni" style="text-align:center;">	
 			 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -83,7 +83,7 @@ elseif (in_category(138)){
 	the_title();
 	echo '</a></p>';
 	endwhile;
-	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
+	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
 
@@ -102,7 +102,7 @@ elseif (in_category(44)){
 	the_title();
 	echo '</a></p>';
 	endwhile;
-	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
+	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
 
@@ -121,7 +121,7 @@ elseif (in_category(141)){
 	the_title();
 	echo '</a></p>';
 	endwhile;
-	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
+	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
 
@@ -166,11 +166,11 @@ elseif ((is_category()) || (is_page_template('map.php')) || is_page(82) || is_pa
 		endwhile;
 
 		}
-		echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
+		echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 		echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 		echo '</div>';
 	} else {
-		echo '<div class="arealog logfl" style="text-align:left;margin-left:0px;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo" /></a></div>';
+		echo '<div class="arealog logfl" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo" /></a></div>';
 	}
 
 }
@@ -188,7 +188,7 @@ elseif (is_page_template('annunci.php')){
 	echo '<div class="inserisciOfferta">Inserisci offerta</div>';
 	echo '<div class="inserisciRichiesta">Inserisci Richiesta</div>';
 	echo '</div>';
-	echo '<div class="arealog logfl" style="text-align:left;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo" /></a></div>';
+	echo '<div class="arealog logfl" style="text-align:left;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo" /></a></div>';
 }
 elseif ((is_single() && !in_category(4)) || (is_page() && !is_page(124)) || (is_tag()) || (is_search())){
 	echo '<div class="sideLeftInt">';
@@ -203,9 +203,9 @@ elseif ((is_single() && !in_category(4)) || (is_page() && !is_page(124)) || (is_
 		echo '<div class="controls">';
 		echo '<div class="chiudiRiassunto">Chiudi</div>';
 		echo '</div>';
-		echo '<div class="arealog logfl" style="text-align:left;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo" /></a></div>';
+		echo '<div class="arealog logfl" style="text-align:left;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo" /></a></div>';
 	} else {
-		echo '<div class="arealog logfl"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
+		echo '<div class="arealog logfl"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	}
 } elseif (in_category(4) || in_category(47)){
 	echo '<div class="sideLeftInt">';
@@ -222,7 +222,7 @@ elseif ((is_single() && !in_category(4)) || (is_page() && !is_page(124)) || (is_
 	echo '</a></p>';
 	endwhile;
 
-	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="'.get_bloginfo('url').'/" target="_blank"><img alt="" src="http://dito.areato.org/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
+	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
 
