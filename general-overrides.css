@@ -15,3 +15,5 @@ nav#nav-below{width:384px;padding-left:12px;font-size:12px;}
 p.segnala2 a{font-weight:bold;}
 a.segnala, a.segnala:link, a.segnala:active, a.segnala:hover, a.segnala:visited{color:#4150B4;}
 a.title-link, a.title-link:visited{font-family: georgia;color:#4150B4;}
+.tubepress_thumb{margin-right:12px;}
+.tubepress_thumb img{padding:1px;}
