@@ -17,3 +17,4 @@ a.segnala, a.segnala:link, a.segnala:active, a.segnala:hover, a.segnala:visited{
 a.title-link, a.title-link:visited{font-family: georgia;color:#4150B4;}
 .tubepress_thumb{margin-right:12px;}
 .tubepress_thumb img{padding:1px;}
+.tubepress_thumbnail_area, .tubepress_thumbs{width:584px;}
