@@ -23,15 +23,15 @@ if(is_page_template('videos.php') || in_category('podcast'))
 	echo '</a>';
 	echo '</div>';
 	endwhile;	
-	if($IEV <= 6)
+	/*if($IEV <= 6)
 	{
 		echo '<p class="segnala2" style="float:right;padding-top:70px;padding-right:10px;font-size:13px;">';
 	}
 	else
 	{
 		echo '<p class="segnala2" style="float:right;padding-top:20px;padding-right:10px;font-size:13px;">';
-	}
-	echo 'Tutti i podcast</p></div>';
+	}*/
+	echo '/div>';
 	endif;
 	wp_reset_query();
 }
