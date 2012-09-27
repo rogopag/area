@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php 
+get_header(); 
+?>
 
 	<div id="content">
 <?php is_tag(); ?>
@@ -6,10 +8,10 @@
 		
 <?php include('sidebar_left.php');?>
 
-<div class="main ieFix">
+<div class="main ieFix <?php ditoLargeClass();?>">
  	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
  	  <?php /* If this is a category archive */ if (is_category()) { ?>
-<h2 class="orange"><?php 
+<h2 class="orange <?php ditoLargeClass();?>"><?php 
 if (is_category('54') ||  is_category('56')  ||  is_category('57')  ||  is_category('58')  ||  is_category('59')  ||  is_category('60') ||  is_category('61')){
 echo 'Come ho fatto a...';
 } elseif (is_category('47') || is_category('50')){
@@ -59,7 +61,7 @@ if (is_category('47') || is_category('50')){
 				
 		if (!empty($pageContent)) { ?>
        <?php if(!in_category(4) || !in_category(141) || !in_category(44) || !in_category(55) || !in_category(138)){?>     
-		<div class="post">
+		<div class="post <?php ditoLargeClass();?>">
 		<a name="a_<?php the_ID(); ?>" />
 		<h3 id="post-<?php the_ID(); ?>" class="post-title yes-intro"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 		<?php } else {?>
@@ -87,13 +89,13 @@ if (is_category('47') || is_category('50')){
         } ?>
 				<!--<small><?php the_time('l, F jS, Y') ?></small>-->
 <?php if (!empty($pageContent)) { ?>
-				<div class="entry">
+				<div class="entry <?php ditoLargeClass();?>">
 					<?php }elseif (is_category('47')){?>
 						<div class="entry entryWithMarginTop">			
 				
 					<?php 
 					} else{?>
-					<div class="entry no-intro">
+					<div class="entry no-intro <?php ditoLargeClass();?>">
 					<?php } 
 					if(is_category(50)){
 					displayPictures();
@@ -124,7 +126,10 @@ if (is_category('47') || is_category('50')){
 		
 
 	<?php endif; ?>
-<?php get_sidebar(); ?>
+<?php 
+if( !is_category('rassegna') )
+get_sidebar(); 
+?>
 	</div>
         
 

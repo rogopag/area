@@ -404,4 +404,14 @@ function dito_doDiarioSidebar()
 	echo '<div class="boxesSecondLine segnalaRight"> <p class="segnala2"><a href="'.get_bloginfo('url').'/category/dito-in-missione" class="segnala">Tutto il Diario</a></p></div></div>';
 }
 add_action('do_diario_sidebar', 'dito_doDiarioSidebar');
+function ditoLargeClass()
+{
+	if( is_category('rassegna') || in_category('rassegna') )
+	{
+		echo 'main-large';
+	}
+	else {
+		echo '';
+	}
+}
 ?>
