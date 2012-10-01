@@ -513,7 +513,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach( $events as $event){
-				$url = get_permalink($eventId->ID);
+				$url = get_permalink( $eventId );
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
