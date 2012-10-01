@@ -286,8 +286,8 @@ function twentyeleven_content_nav( $nav_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
 		<nav id="<?php echo $nav_id; ?>">
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Vecchi', 'twentyeleven' ) ); ?></div>
-			<div class="nav-next"><?php previous_posts_link( __( 'Nuovi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Precedenti', 'twentyeleven' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( __( 'Successivi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
 		</nav><!-- #nav-above -->
 	<?php endif;
 }
@@ -414,4 +414,12 @@ function ditoLargeClass()
 		echo '';
 	}
 }
+function dito_overrideContentInNews($content)
+{
+	if( is_category( array('news') ) )
+	{
+		echo '<div class="entry padding-bottom"><img src="'.get_bloginfo('url').'/wp-content/uploads/2008/09/news.jpg" /></div>';
+	}
+}
+add_action('dito_printAdditionalContent', 'dito_overrideContentInNews');
 ?>
