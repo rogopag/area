@@ -12,7 +12,7 @@ $forumControl = isset($_REQUEST['forum'])?$_REQUEST['forum']:null;
 if(is_page_template('videos.php') || in_category('podcast'))
 {
 	echo '<ul class="videoWidget">';
-	dynamic_sidebar();
+	dynamic_sidebar( 'Tubepress' );
 	echo '</ul>';
 	query_posts('cat=139&posts_per_page=2');
 	if (have_posts()) :
