@@ -18,3 +18,4 @@ a.title-link, a.title-link:visited{font-family: georgia;color:#4150B4;}
 .tubepress_thumb{margin-right:20px;}
 .tubepress_thumb img{padding:1px;}
 .tubepress_thumbnail_area, .tubepress_thumbs{width:584px;}
+.smallAlignRight{position:static;float:right;}
