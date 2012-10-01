@@ -22,3 +22,4 @@ a.title-link, a.title-link:visited{font-family: georgia;color:#4150B4;}
 .smallAlignRight{position:static;float:right;}
 li.widget_tubepress h2{padding-top:14px;}
 ul.videoWidget li.widget_tubepress div.tubepress_sidebar{padding-top:12px;}
+.tubepress_container{margin-bottom:0;}
