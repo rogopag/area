@@ -20,3 +20,4 @@ a.title-link, a.title-link:visited{font-family: georgia;color:#4150B4;}
 .tubepress_thumb img{padding:1px;}
 .tubepress_thumbnail_area, .tubepress_thumbs{width:584px;}
 .smallAlignRight{position:static;float:right;}
+li.widget_tubepress h2{padding-top:14px;}
