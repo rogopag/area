@@ -1,5 +1,7 @@
 <?php 
-get_header(); 
+get_header();
+if(!$wp_query) global $wp_query;
+query_posts( array_merge( array( 'posts_per_page' => 3 ) , $wp_query->query ) ); 
 ?>
 
 	<div id="content">
@@ -48,9 +50,6 @@ single_cat_title();
 		<h2 class="pagetitle">Blog Archives</h2>
  	  <?php } ?>
                 
-                
-
-		
 				<?php while (have_posts()) : the_post(); 
 				
 if (is_category('47') || is_category('50')){
@@ -111,13 +110,16 @@ if (is_category('47') || is_category('50')){
                     ?>
               <?php if(!in_category(4) || !in_category(141) || !in_category(44) || !in_category(55) || !in_category(138)){?>  
 				</div>
+				
 				<?php }?>
 				
 <?php if (!empty($pageContent)) { ?>
 			</div>
 <?php }?>
+
 		<?php endwhile; ?>
-		
+		<?php do_action('dito_printAdditionalContent'); ?>
+		<?php twentyeleven_content_nav( 'nav-below' ); ?>
 </div>
 
 
