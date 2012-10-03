@@ -129,7 +129,7 @@ if (is_category('47') || is_category('50')){
 
 	<?php endif; ?>
 <?php 
-if( !is_category( array('rassegna', 'gli-eventi', 'arte-spettacoli-appuntamenti', 'convegni-e-seminari') ) )
+if( !is_category( array('rassegna', 'gli-eventi', 'arte-spettacoli-appuntamenti', 'convegni-e-seminari', 'dito-in-missione') ) )
 get_sidebar(); 
 ?>
 	</div>
