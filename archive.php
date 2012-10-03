@@ -18,7 +18,7 @@ if (is_category('54') ||  is_category('56')  ||  is_category('57')  ||  is_categ
 echo 'Come ho fatto a...';
 } elseif (is_category('47') || is_category('50')){
 echo 'Sogni, segni, disegni';
-} 
+}
 else{
 single_cat_title(); 
 }
