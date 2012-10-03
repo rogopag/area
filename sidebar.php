@@ -18,7 +18,7 @@ if(is_page_template('videos.php') || in_category('podcast'))
 	if (have_posts()) :
 	echo '<div class="boxesBox"><h2 class="blue secondLine">Podcast recenti</h2>'; 
 	while (have_posts()) : the_post();
-	echo '<div class="boxesSecondLine podcast"><a href="'.get_bloginfo('url').'/?p='.$post->ID.'" title="'.$post->post_title.'">';
+	echo '<div class="boxesSecondLine podcast"><a href="'.get_permalink( $post->ID ).'" title="'.$post->post_title.'">';
 	the_title();
 	echo '</a>';
 	echo '</div>';
