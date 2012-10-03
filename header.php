@@ -96,9 +96,7 @@ wp_head(); ?>
 
 <div class="community">
 <div class="menuItemLeft">
-<div class="com"><a href="<?php bloginfo('url');?>/?page_id=<?php echo  dito_mediateca_page_link();?>">Mediateca</a></div>
-<div class="com"><a href="<?php bloginfo('url');?>/?page_id=958">Interviste e dintorni</a></div>
-<div class="comLast"><a href="<?php bloginfo('url');?>/?page_id=88">Come ho fatto a...</a></div>
+<?php do_action('print_mediateca_menu_links'); ?>
 </div>
 </div>
 
