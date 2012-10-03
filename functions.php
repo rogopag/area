@@ -246,17 +246,31 @@ function dito_mediateca_page_link()
 {
 	return ( class_exists( 'Mediateca_Init' ) ) ? Mediateca_Init::$pages[MEDIATECA_SLUG]->ID : 3;
 }
-function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $args = array() )
+function dito_printObjectTermsInNiceFormat( $ID, $taxonomies = array(), $excludes = array(), $args = array() )
 {
-	( empty($taxonomies) ) ? $taxonomies = array( 'category', 'categoria', 'terzo-livello', 'sezione' ) : $taxonomies;
+	( empty($taxonomies) ) ? $taxonomies = get_object_taxonomies( get_post_type( $ID ) ) : $taxonomies;
+	
+	
+	if( $excludes && in_array($excludes, $taxonomies) ) 
+	{
+		foreach( $excludes as $exclude )
+		{
+			$key = array_search( $exclude, $taxonomies );
+			unset( $taxonomies[$key] );
+		}
+	}
 	
 	$terms = wp_get_object_terms( $ID, $taxonomies, $args );
 	
 	$str = '';
 	
-	foreach( $terms as $term )
+	if( $terms )
 	{
-		$str .= $term->name.', ';
+		foreach( $terms as $term )
+		{
+			//if( $term->name != 'Altro' )
+			$str .= '<a href="'.get_bloginfo('url').'/'.$term->taxonomy.'/'.$term->slug.'">'.$term->name.'</a>, ';
+		}
 	}
 	return rtrim($str, ', ');
 }
@@ -288,8 +302,13 @@ if( !function_exists('show_template') )
 }
 function ditoDoExerpt()
 {
+	//make sure add this plugin shit doesn't bother
+	if (function_exists ( 'addthis_init' )) {
+		remove_filter ( 'the_content', 'addthis_display_social_widget', 15 );
+		remove_filter ( 'get_the_excerpt', 'addthis_display_social_widget_excerpt', 11 );
+	}
 	if( function_exists('the_advanced_excerpt') )
-	the_advanced_excerpt('length=150&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
+		the_advanced_excerpt('length=150&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
 }
 //removes empty tags from the_content
 if( !function_exists('remove_empty_p') )
@@ -299,5 +318,8 @@ if( !function_exists('remove_empty_p') )
 		$content = force_balance_tags($content);
 		return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
 	}
+}
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'mediateca-thumb', 100, 75, true ); //(cropped)
 }
 ?>

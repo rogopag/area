@@ -72,7 +72,7 @@ Template name:sogni
 		   }
 		   endwhile;
 	//}
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'/?cat=47" class="segnala">Tutti i racconti</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(47).'" class="segnala">Tutti i racconti</a></p></div>';
 	 	echo '<h2 class="blue secondLine">In cornice</h2>';
     $my_query = new WP_Query("cat=50&showposts=2");
     while ($my_query->have_posts()) : $my_query->the_post(); 
@@ -92,7 +92,7 @@ Template name:sogni
 		   echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'<br/>Illustrazioni</a></div>';
 		
 	 endwhile; 
-	 echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'/?cat=50" class="segnala">Tutte le illustrazioni</a></p></div>';		
+	 echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(50).'" class="segnala">Tutte le illustrazioni</a></p></div>';		
 	$my_query = new WP_Query("cat=142&showposts=2");
 //	if($my_query->have_posts()):
 	echo '<h2 class="blue secondLine">Le vostre pagine</h2>';
@@ -112,7 +112,7 @@ Template name:sogni
   	$shortContentText = str_replace(".", ".<br/>", $shortContentText);
    echo  '<div class="boxes"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 	endwhile;
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_bloginfo('url').'/?cat=142" class="segnala">Tutte le vostre pagine</a><br />
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(142).'" class="segnala">Tutte le vostre pagine</a><br />
 	<a href="'.get_bloginfo('url').'/?page_id=998" class="segnala">Inviaci la tua pagina</a>
 	</p></div>';
 //	endif;

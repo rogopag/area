@@ -493,15 +493,6 @@ var imgURL = "http://dito.areato.org/home/wp-content/uploads/homepics/pic_";
 	$('.homeFirst').find('img').attr({src:""+imgURL+rand_no+".jpg"});
 };
 function logoPositionControl(){
-	/*var mainHeight = $(".main").height();
-    var entryHeight = $(".entry").height();
-    var entryNum = $(".entry").length;
-    var storyNum = $(".story").length;
-    if ((entryNum == 1) || (storyNum == 1)){
-    $(".logfl").css({marginTop:""+(entryHeight-10)+"px"});
-    } else if (logoDown == true){
-        $(".logfl").css({marginTop:""+(mainHeight-85)+"px"});
-    }*/
     $(".logfl").css({marginTop:"320px"});
 };
 function annunciTitleControl(){
