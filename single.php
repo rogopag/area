@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<div id="content">
+<div id="content">
 <?php get_template_part('sidebar_left');?>
 	<?php if (have_posts()) : while (have_posts()) : the_post(); 
 
@@ -21,13 +21,12 @@ echo 'Sogni, segni, disegni';
 } elseif(in_category('34') || in_category('35')) {
 echo 'Piccoli annunci';
 
-}elseif((!in_category('55')) && (!in_category('56')) && (!in_category('57')) && (!in_category('58')) && (!in_category('59')) && (!in_category('60')) && (!in_category('61'))) {
+}elseif( (!in_category('55')) && (!in_category('56')) && (!in_category('57')) && (!in_category('58')) && (!in_category('59')) && (!in_category('60')) && (!in_category('61') ) ) {
 $cate = get_the_category();
 $size = sizeof($cate);
 $cate = $cate[$size-1]->cat_name;	
 //$cate = $cate[$size-1]->cat_neme;	
 echo $cate;
-
 }
 if (in_category('47') || in_category('50')){
     $author = get_post_meta($post->ID, "Author Name", $single=true);
