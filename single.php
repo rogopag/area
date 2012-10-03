@@ -99,7 +99,7 @@ if (in_category('47') || in_category('50')){
 <?php endif; ?>
 </div>
 <?php
-if( !in_category('rassegna') ) 
+if( !in_category( array('rassegna', 'cosa-vuol-dire' ) ) ) 
 get_sidebar(); ?>
 	</div>
 
