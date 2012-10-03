@@ -25,7 +25,7 @@ echo $links;
 <?php	endwhile; endif; ?>
 </div>
 </div>
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 </div>
 
 <?php get_footer(); ?>
