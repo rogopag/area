@@ -259,7 +259,7 @@ elseif (in_category('9')){
 	$do_not_duplicate = $post->ID;
 	
 	echo '<h2 class="blue">Ultime</h2>';
-	$my_query = new WP_Query("cat=9&showposts=3");
+	$my_query = new WP_Query("cat=9&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	if ($post->ID == $do_not_duplicate) {
 		continue;
@@ -527,7 +527,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 				$lastSpaceOnEarth = strrpos($shortContentText, ' ');
 				$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
 				echo '<div class="boxes"><a href="' .$url.'" >'.$title.'</a>,';
-				echo '<p><strong>Luogo: </strong>'.$eventLocation.'<br/><strong>Data inizio: </strong>'.$eventStartDate.'<br/><strong>Ora inizio: </strong>'.$eventStartTime.'<br/><strong>Descrizione: </strong>'.stripslashes($shortContentText).'...<a href="' .$url.'">['.$postNum.']</a></p></div>';
+				echo '<p><strong>Luogo: </strong>'.$eventLocation.'<br/><strong>Data inizio: </strong>'.$eventStartDate.'<br/><strong>Ora inizio: </strong>'.$eventStartTime.'<br/><strong>Descrizione: </strong>'.stripslashes($shortContentText).'...<a href="' .$url.'">[Leggi tutto]</a></p></div>';
 			}
 		}
 	}
@@ -542,7 +542,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach($events as $event ){
-				$url = get_permalink($eventId->ID);
+				$url = get_permalink( $eventId );
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
@@ -556,7 +556,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 				$lastSpaceOnEarth = strrpos($shortContentText, ' ');
 				$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
 				echo '<div class="boxesSecondLine"><a href="' .$url.'" >'.$title.'</a>,';
-				echo '<p><strong>Luogo: </strong>'.$eventLocation.'<br/><strong>Data inizio: </strong>'.$eventStartDate.'<br/><strong>Ora inizio: </strong>'.$eventStartTime.'<br/><strong>Descrizione: </strong>'.stripslashes($shortContentText).'...<a href="' .$url.'">['.$postNum.']</a></p></div>';
+				echo '<p><strong>Luogo: </strong>'.$eventLocation.'<br/><strong>Data inizio: </strong>'.$eventStartDate.'<br/><strong>Ora inizio: </strong>'.$eventStartTime.'<br/><strong>Descrizione: </strong>'.stripslashes($shortContentText).'...<a href="' .$url.'">[Leggi tutto]</a></p></div>';
 			}
 		}
 	}

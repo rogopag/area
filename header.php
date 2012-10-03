@@ -60,11 +60,11 @@ if( is_front_page() )
 ?>
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/script.js"></script>
 <?php if ($mapLoaded == true) {?>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAzxX5Mn7-b3jCNPCVAGep6hS3N25njJgxlCrYmbid7_Wn44kqTxRXjNXNGEH7VKq3kBIYxpZyymlFxg" type="text/javascript"></script>	
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDPaRPDuSGQjSoIMBNEN-G-OJztJ9fuwZc" type="text/javascript"></script>	
 <?php } ?>
 <?php
 if (is_page_template('geo.php')){?>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAzxX5Mn7-b3jCNPCVAGep6hS3N25njJgxlCrYmbid7_Wn44kqTxRXjNXNGEH7VKq3kBIYxpZyymlFxg" type="text/javascript"></script>	
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyDPaRPDuSGQjSoIMBNEN-G-OJztJ9fuwZc" type="text/javascript"></script>	
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/gmapsedit.js"></script>
 <?php }
 if ((is_category('43')) || (is_category('42')) || (is_category('47')) || (is_category('50')) || (is_category('44')) || is_page_template('annunci.php')){?>
