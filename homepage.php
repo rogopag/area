@@ -71,8 +71,7 @@ get_header();
 		<?php include (TEMPLATEPATH . "/searchform.php"); ?>
 
 	<?php endif; ?>
-	<?php 
-	get_sidebar(); ?>
+	<?php get_sidebar(); ?>
 
 	</div>
 
