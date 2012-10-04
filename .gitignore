@@ -10,3 +10,5 @@ dito.tmproj
 .cache/.dataModel
 
 .cache/.wsdlDataModel
+
+.DS_Store
