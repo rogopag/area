@@ -615,7 +615,7 @@ $mapsLinksQuery = "SELECT * FROM g_maps WHERE mcategory_id = '12' ORDER BY map_i
 $mapsLinks = $wpdb->get_results($mapsLinksQuery);
 foreach ($mapsLinks as $mapsLink){
 	$sname = $mapsLink->service;
-	echo '<a href="http://dito.areato.org/home/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
+	echo '<a href="'.get_bloginfo('url').'/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
 }
 
 ?>
