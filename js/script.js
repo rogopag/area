@@ -490,7 +490,7 @@ $('.closeFull').click(function(){
 function homeImgSwap(){
 var imgURL = "/wp-content/uploads/homepics/pic_";
 	var rand_no = Math.floor((10-4)*Math.random()) + 5;
-	rand_no = 77;
+	rand_no = 7;
 	$('.homeFirst').find('img').attr({src:""+imgURL+rand_no+".jpg"});
 };
 function logoPositionControl(){
