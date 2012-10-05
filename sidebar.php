@@ -12,7 +12,7 @@ $forumControl = isset($_REQUEST['forum'])?$_REQUEST['forum']:null;
 if(is_page_template('videos.php') || in_category('podcast'))
 {
 	echo '<ul class="videoWidget">';
-	dynamic_sidebar( 'Tubepress' );
+	dynamic_sidebar('Tubepress');
 	echo '</ul>';
 	query_posts('cat=139&posts_per_page=2');
 	if (have_posts()) :
@@ -23,14 +23,14 @@ if(is_page_template('videos.php') || in_category('podcast'))
 	echo '</a>';
 	echo '</div>';
 	endwhile;	
-	/*if($IEV <= 6)
+	if($IEV <= 6)
 	{
 		echo '<p class="segnala2" style="float:right;padding-top:70px;padding-right:10px;font-size:13px;">';
 	}
 	else
 	{
 		echo '<p class="segnala2" style="float:right;padding-top:20px;padding-right:10px;font-size:13px;">';
-	}*/
+	}
 	echo '</div>';
 	endif;
 	wp_reset_query();
@@ -305,7 +305,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 
 	endwhile;
 
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(47).'" class="segnala">Tutti i racconti</a></p></div>';
+echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(47).'" class="segnala">Tutti i racconti</a></p></div>';
 	echo '<h2 class="blue secondLine">In cornice</h2>';
 	$my_query = new WP_Query("cat=50&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -319,7 +319,7 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
 	echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'<br/>Illustrazioni</a></div>';
 
 	endwhile;
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(50).'" class="segnala">Tutte le illustrazioni</a></p></div>';
+echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(50).'" class="segnala">Tutte le illustrazioni</a></p></div>';
 	$my_query = new WP_Query("cat=142&showposts=2");
 //	if($my_query->have_posts()):
 	echo '<h2 class="blue secondLine">Le vostre pagine</h2>';
@@ -339,13 +339,14 @@ elseif (in_category('49') || (in_category('47')) || (in_category('50')) || in_ca
   	$shortContentText = str_replace(".", ".<br/>", $shortContentText);
    echo  '<div class="boxes"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 	endwhile;
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(142)." class="segnala">Tutte le vostre pagine</a><br />
+echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(142).'" class="segnala">Tutte le vostre pagine</a><br />
 	<a href="'.get_bloginfo('url').'/?page_id=998" class="segnala">Inviaci la tua pagina</a>
 	</p></div>';
 //	endif;
 
 }
-elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (in_category("141")) || /*(in_category("138")) ||*/ (is_category("44")) || (is_category("55")) || (is_category("137")) || (is_category("141")) /*|| (is_category("138")) */){
+elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (in_category("141")) || /*(in_category("138")) ||*/ (is_category("44")) || (is_category("55")) || (is_category("137")) || (is_category("141")) /*|| (is_category("138")) */)
+{
 	echo '<h2 class="blue">Interviste</h2>';
 	$my_query = new WP_Query(array('category__in' => array(141), 'showposts'=>2));
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -369,7 +370,28 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	
 	if( !is_category(141) )
 	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link( 141 ).'" class="segnala">Tutte le interviste</a></p></div>';
-
+	
+	echo '<h2 class="blue secondLine">Recensioni</h2>';
+	$my_query = new WP_Query("cat=44&showposts=2");
+	while ($my_query->have_posts()) : $my_query->the_post();
+	if ($post->ID == $do_not_duplicate) {
+		continue;
+		update_post_caches($posts);
+	}
+	else {
+		update_post_caches($posts);
+		$title = $post->post_title;
+		$link = get_permalink($post->ID);
+		$shortContentText = $post->post_content;
+		$shortContentText = strip_tags($shortContentText);
+		$shortContentText = substr($shortContentText ,0, 800);
+		$lastSpaceOnEarth = strpos($shortContentText, '.', 50);
+		$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
+		$shortContentText = str_replace(".", ".<br/>", $shortContentText);
+		echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
+	}
+	endwhile;
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=44" class="segnala">Tutte le recensioni</a></p></div>';
 	echo '<h2 class="blue secondLine">Studi e ricerche</h2>';
 	$my_query = new WP_Query("cat=55&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -385,17 +407,33 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
 
 	endwhile;
-	
-	if( !is_category(55) )
+
 	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link( 55 ).'" class="segnala">Tutte le pubblicazioni</a></p></div>';
+	echo '<h2 class="blue secondLine">Diario di Di.To</h2>';
+	$my_query = new WP_Query("cat=138&showposts=2");
+	while ($my_query->have_posts()) : $my_query->the_post();
+	update_post_caches($posts);
+	$title = $post->post_title;
+	$link = get_permalink($post->ID);
+	$shortContentText = $post->post_content;
+	$shortContentText = strip_tags($shortContentText);
+	$shortContentText = substr($shortContentText ,0, 800);
+	$lastSpaceOnEarth = strpos($shortContentText, '.', 10);
+	$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
+	$shortContentText = str_replace(".", ".<br/>", $shortContentText);
+	echo  '<div class="boxesSecondLine"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
+
+	endwhile;
+
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=138" class="segnala">Tutto il Diario</a></p></div>';
 
 }
-////DIARIO DI DITO
 elseif( is_category("138") )
 {
 	do_action('do_diario_sidebar');
 }
 /////////PERCORSI AND GENERIC SINGLE POST OR CAT//////////////////////////////////////////////
+
 elseif ((is_category())  && (!is_category('43')) && (!is_category('137')) && (!is_category('138')) && (!is_category('141')) && (!is_category('47')) && (!is_category('50')) && (!is_category('142')) && (!is_category('44')) && (!is_category('54')) && (!is_category('55')) && (!is_category('56')) && (!is_category('57')) && (!is_category('45')) && (!is_category('58')) && (!is_category('59')) && (!is_category('60')) && (!is_category('61'))|| (is_single()) && (!in_category('42')) && (!in_category('43'))  && (!in_category('34')) && (!in_category('35')) && (!in_category('54')) &&(!in_category('9')) && (!in_category('49')) && (!in_category('44')) && (!in_category('48')) &&(!in_category('47')) && (!in_category('50')) && (!in_category('55')) && (!in_category('56')) && (!in_category('57')) && (!in_category('58')) && (!in_category('59')) && (!in_category('60')) && (!in_category('61')) && (!in_category('12')) && (!in_category('62')) && (!in_category('51')) && (!in_category('137')) && (!in_category('141')) && (!in_category('138')) && (!in_category('51')) && (!in_category('53')) && (!in_category('podcast')) && (!in_category('45')) && (!in_category('142')) && (!in_category('63'))|| (is_page_template('map.php')) && (!is_page_template('videos.php')) && (!is_page(357))){
 	
 	displayLinks( get_queried_object_id() );
@@ -451,7 +489,7 @@ if( $glossaryLen > 0 )
 
 	echo '<br><br>';
 
-	echo '<p class="segnala2"><a href="'.get_bloginfo('url').'?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p>';
+echo '<p class="segnala2"><a href="'.get_bloginfo('url').'?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p>';
 	echo '</div>';
 }
 }
@@ -513,7 +551,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach( $events as $event){
-				$url = get_permalink( $eventId );
+				$url = get_permalink($eventId);
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
@@ -542,7 +580,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach($events as $event ){
-				$url = get_permalink( $eventId );
+				$url = get_permalink($eventId->ID);
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
@@ -577,7 +615,7 @@ $mapsLinksQuery = "SELECT * FROM g_maps WHERE mcategory_id = '12' ORDER BY map_i
 $mapsLinks = $wpdb->get_results($mapsLinksQuery);
 foreach ($mapsLinks as $mapsLink){
 	$sname = $mapsLink->service;
-	echo '<a href="'.get_bloginfo('url').'/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
+	echo '<a href="http://dito.areato.org/home/map.php?mapsearch='.$sname.'">'.$sname.'</a><br />';
 }
 
 ?>
