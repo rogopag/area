@@ -284,7 +284,7 @@ add_theme_support( 'post-thumbnails' );
 // for debug purposes only
 if( !function_exists('show_template') )
 {
-	add_action('wp_head', 'show_template');
+	//add_action('wp_head', 'show_template');
 	function show_template() {
 	    global $template;
 	    echo basename($template);
