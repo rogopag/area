@@ -6,7 +6,7 @@ query_posts( array_merge( array( 'posts_per_page' => 50 ) , $wp_query->query ) )
 ?>
 
 	<div id="content">
-<?php is_tag(); ?>
+<?php is_tag()  ?>
 		<?php if (have_posts()) : ?>
 		
 <?php include('sidebar_left.php');?>
