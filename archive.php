@@ -1,7 +1,8 @@
 <?php 
 get_header();
 if(!$wp_query) global $wp_query;
-query_posts( array_merge( array( 'posts_per_page' => 3 ) , $wp_query->query ) ); 
+if( is_category( array('servizi') ) )
+query_posts( array_merge( array( 'posts_per_page' => 50 ) , $wp_query->query ) ); 
 ?>
 
 	<div id="content">
