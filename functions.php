@@ -318,8 +318,8 @@ if( !function_exists('dito_create_pages') )
 	{
 		global $current_user, $dito_pages;
 		
-		//Push a page slug to add a page dynamically
-		$dito_pages = array('laboratori-e-progetti', 'interviste-e-ricerche', 'diario-di-di-to' );
+		//Push a page slug to add a page dynamically by invoking add_filter('dito_pages_array');
+		$dito_pages = apply_filters_ref_array( 'dito_pages_array', array( array('laboratori-e-progetti', 'interviste-e-ricerche', 'diario-di-di-to' ) ) );
 		
 		get_currentuserinfo();
 		
