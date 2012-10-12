@@ -262,12 +262,6 @@ elseif (in_category('9')){
 	echo '<h2 class="blue">Ultime</h2>';
 	$my_query = new WP_Query("cat=9&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	if ($post->ID == $do_not_duplicate) {
-		continue;
-		update_post_caches($posts);
-	}
-	else {
-		update_post_caches($posts);
 		$title = $post->post_title;
 		$link = get_permalink($post->ID);
 		$shortContentText = $post->post_content;
@@ -277,13 +271,11 @@ elseif (in_category('9')){
 		$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
 		$shortContentText = str_replace(".", ".<br/>", $shortContentText);
 		echo  '<div class="boxes"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'</div>';
-	}
 	endwhile;
-
+		echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link(9).'" class="segnala">Tutte le news</a></p></div>';
 	echo '<h2 class="blue secondLine">Le pi&ugrave; lette</h2>';
 	
 	popular_posts('limit=2&output_template=<div class="boxesSecondLine">{link}</div>&divider=');
-	
 	
 }
 
@@ -582,7 +574,7 @@ elseif ((is_page_template('annunci.php')) || (in_category('34')) || (in_category
 			$eventQuery = "SELECT * FROM wp_eventscalendar_main WHERE postID='$eventId' ORDER BY eventStartDate DESC LIMIT 0,2";
 			$events = $wpdb->get_results($eventQuery, ARRAY_A);
 			foreach($events as $event ){
-				$url = get_permalink($eventId->ID);
+				$url = get_permalink($eventId);
 				$title = stripslashes($event['eventTitle']);
 				$eventLocation = $event['eventLocation'];
 				$eventStartDate =  $event['eventStartDate'];
