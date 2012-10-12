@@ -49,18 +49,16 @@ if (is_search() || is_page(3) || is_page("124")){
 	$shortContentText = str_replace(".", ".<br/>", $shortContentText);
 	$shortContentText = apply_filters('the_content', $shortContentText);
 	$link = get_permalink($post->ID);
-	echo  '<div class="boxes"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'<p style="visibility:hidden;"><a href="'.$link.'">Link al sito competente</a></p> </div>';
+	echo  '<div class="boxes"><a href="'.$link.'">'.$title.'</a><br/>'.$shortContentText.'<!--<p style="display:none;"><a href="'.$link.'">Link al sito competente</a></p>--> </div>';
 	endwhile;
 	echo '<div class="divClear"></div>';
 	echo'</div>';
 	
 	
-	echo '<br /><div <p>&nbsp;</p><div class="halfBox bluesmall"><a href="'.get_bloginfo('url').'/wp-login.php?action=register">Iscriviti alla Newsletter</a>
-	
-	</div></div>';
+	echo '<div class="halfBox bluesmall newlettersubscription"><a href="'.get_bloginfo('url').'/wp-login.php?action=register">Iscriviti alla Newsletter</a></div>';
 	
 	
-	echo '<p><br><div class="boxesBox"><h2 class="blue secondLine"><a href="'.get_permalink(86).'" class="title-link">Eventi</a></h2></div></p>';
+	echo '<div class="boxesBox"><h2 class="blue secondLine"><a href="'.get_permalink(86).'" class="title-link">Eventi</a></h2></div>';
 	echo '<div id="cWrap">';
 	sidebarEventsCalendar();
 	echo '</div>';
