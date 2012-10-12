@@ -1,45 +1,21 @@
 <div id="sidebarLeft">
 <?php
-global $wp;
+global $wp, $post, $wp_query;
 
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:get_queried_object_id();
-if ( is_front_page() ){
-	do_action("sidebar_left_home_first_box");
-/*	echo '<h2 class="green">Interviste e dintorni</h2>';
-	$my_query = new WP_Query("cat=137&showposts=2");
-	while ($my_query->have_posts()) : $my_query->the_post();
-	$title = $post->post_title;
-	$link = get_permalink($post->ID);
-	$author = $post->post_author;
-	$autQuery = "SELECT user_nicename FROM wp_users WHERE ID ='$author'";
+///FRONT PAGE
+if (is_front_page ()) {
+	do_action ( "sidebar_left_home_first_box" );
 	
-	$myRowAuth = $wpdb->get_var($autQuery);
-	$myAuth = $myRowAuth;
-	$shortContentText = $post->post_content;
-	$shortContentText = strip_tags($shortContentText);
-	$shortContentText = htmlspecialchars($shortContentText);
-	if (strlen($shortContentText) > 65) {
-		$shortContentText = substr($shortContentText ,0, 800);
-		$lastSpaceOnEarth = strpos($shortContentText, ' ', 40);
-		$shortContentText = substr($shortContentText ,0, $lastSpaceOnEarth+1);
-		//$shortContentText = str_replace(" ", "...", $shortContentText);
-	}
-
-	echo '<div class="forums">';
-	echo '<h4><a href="'.$link.'">'.$title.'</a></h4>';
-	echo '<em>'.$myAuth.'</em>';
-	echo '<p>'.$shortContentText.'[<a href="'.$link.'">...</a>]</p></div>';
-	endwhile;*/
-	echo '<div class="arealog"> <a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a>
-	<!-- <a href="http://www.fondazionecrt.it" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/uploads/crt.gif" class="crtGif"/></a> -->
-		
+	echo '<div class="arealog"> <a href="http://www.areato.org/" target="_blank"><img alt="" src="' . get_bloginfo ( 'url' ) . '/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a>
 			 <div class="imgDonazioni" style="text-align:center;">	
 			 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="3372968">
-			<input type="image" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/donazioni.jpg" border="0" name="submit" alt=""></form><span class="donazione"><strong>DONA ORA !</strong></span></div></div> ';
-			
+			<input type="image" src="' . get_bloginfo ( 'url' ) . '/wp-content/themes/area/imgs/donazioni.jpg" border="0" name="submit" alt=""></form><span class="donazione"><strong>DONA ORA !</strong></span></div></div> ';
+
 }
+///LINK PAGE
 elseif( is_page_template('links.php') )
 {
 	echo '<div class="sideLeftInt">';
@@ -50,6 +26,7 @@ elseif( is_page_template('links.php') )
 	} echo"</div>";
 	echo '<div class="arealog logfl"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 }
+/////Studi e ricerche
 elseif (in_category(55) || is_category(55)){
 	echo '<div class="sideLeftInt">';
 	if (function_exists('bcn_display'))
@@ -64,11 +41,13 @@ elseif (in_category(55) || is_category(55)){
 	the_title();
 	echo '</a></p>';
 	endwhile;
+	rewind_posts();
 	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
 
 }
+/////Diario di Di.To
 elseif (in_category(138)){
 	echo '<div class="sideLeftInt">';
 	if (function_exists('bcn_display'))
@@ -83,6 +62,7 @@ elseif (in_category(138)){
 	the_title();
 	echo '</a></p>';
 	endwhile;
+	rewind_posts();
 	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
@@ -121,6 +101,7 @@ elseif (in_category(141)){
 	the_title();
 	echo '</a></p>';
 	endwhile;
+	rewind_posts();
 	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';
@@ -146,25 +127,34 @@ elseif ((is_category()) || (is_page_template('map.php')) || is_page(82) || is_pa
 			$catName = 45;
 		}
 		else {
-			foreach((get_the_category()) as $category) {
+			foreach( (get_the_category() ) as $category) {
 				if($category->cat_ID != 64){
 				$catName =  $category->cat_ID;
 				//  echo $catName;
 				}
 			}
 		}
-		if(!is_page(124)) {
-		if(is_page(357)){
-		$my_query = new WP_Query("cat=$catName&orderby=title&order=asc");
-		} else {
-		$my_query = new WP_Query("cat=$catName");
-		}
-		while ($my_query->have_posts()) : $my_query->the_post();
-		echo '<p><a href="'.get_permalink($post->ID).'">';
-		the_title();
-		echo '</a></p>';
-		endwhile;
-
+		if(!is_page(124))
+		{
+			if(is_page(357))
+			{
+				$my_query = new WP_Query("cat=$catName&orderby=title&order=asc");
+			}
+			elseif( is_category(array('servizi') ) )
+			{
+				$my_query = new WP_Query("cat=$catName&nopaging=true");
+			}
+			else 
+			{
+				$page = ( $wp_query->query_vars['paged'] ) ? $wp_query->query_vars['paged'] : 1;
+				$my_query = new WP_Query("cat=$catName&paged=$page");
+			}
+			while ($my_query->have_posts()) : $my_query->the_post();
+			echo '<p><a href="'.get_permalink($post->ID).'">';
+			the_title();
+			echo '</a></p>';
+			endwhile;
+			rewind_posts();
 		}
 		echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 		echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
@@ -215,13 +205,13 @@ elseif ((is_single() && !in_category(4)) || (is_page() && !is_page(124)) || (is_
 		bcn_display();
 	} echo"</div>";
 	echo '<div class="questions">';
-	$my_query = new WP_Query("cat=4");
+	$my_query = new WP_Query("cat=4&nopaging=true");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
 	echo '</a></p>';
 	endwhile;
-
+	rewind_posts();
 	echo '<div class="arealog" style="text-align:left;margin-left:0px;"><a href="http://www.areato.org/" target="_blank"><img alt="" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/arealog.jpg" class="imgLogo"/></a></div>';
 	echo '<p>&nbsp;</p><p class="topOfThePage"><a href="#topOfThePage"> Torna a inizio pagina</a></p>';
 	echo '</div>';

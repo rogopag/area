@@ -375,7 +375,7 @@ function dito_doDiarioSidebar()
 	echo '<div class="boxesBox"><h2 class="blue">Ultime dal Diario</h2>';
 	$my_query = new WP_Query("cat=138&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
-	update_post_caches($posts);
+	update_post_caches( $posts );
 	$title = $post->post_title;
 	$link = get_permalink($post->ID);
 	$shortContentText = $post->post_content;
@@ -401,7 +401,7 @@ function ditoLargeClass()
 		echo '';
 	}
 }
-function dito_overrideContentInNews($content)
+function dito_overrideContentInNews( $content )
 {
 	if( is_category( array('news') ) )
 	{
@@ -409,4 +409,13 @@ function dito_overrideContentInNews($content)
 	}
 }
 add_action('dito_printAdditionalContent', 'dito_overrideContentInNews');
+
+function dito_getCategoryId()
+{
+	foreach( (get_the_category() ) as $category) 
+	{
+		$catName =  $category->cat_ID;
+	}
+	return $catName;
+}
 ?>
