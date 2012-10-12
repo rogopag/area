@@ -69,8 +69,9 @@ if($(".intro").is("div")){
         }
     });
 }      
-if ($(".questions").is("div")){
-            elScroll();
+	if ( $(".questions").is("div") )
+	{
+       elScroll();
 	}              
 });//////CLOSE DOCUMENT READY FUNCTION///////////////////////////////
 function resetMap(){
@@ -96,18 +97,25 @@ function clearMapForm(){
     });
 };
 function elScroll(){
+		
         var pageScrl = $(document).scrollTop();
         var container_Scrl = $('#content').offset({scroll:false});
 		var fm_Scrl = $('.questions').offset({scroll:false});
-		var amountToTop=pageScrl-0-container_Scrl.top;
-		if ($("#maptxt").is("div")){
-		amountToTop=6;
+		
+		var amountToTop = pageScrl-0-container_Scrl.scrollTop();
+		
+		if ( $("#maptxt").is("div") )
+		{
+			amountToTop=6;
 		}
-		else if( amountToTop<0){
-			amountToTop=40;
-			}
+		else if( amountToTop < 60 )
+		{
+			amountToTop=60;
+		}
+		
         $('.questions').animate({top: amountToTop},function(){
-                        window.setTimeout('elScroll()', 2500)
+        	// console.log('lement should d something now', amountToTop);
+             window.setTimeout('elScroll()', 2000)
         });
 };
 function catAnnunci(){

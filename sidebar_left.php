@@ -1,5 +1,7 @@
 <div id="sidebarLeft">
 <?php
+//debug
+//dito_getCategoryId()
 global $wp, $post, $wp_query;
 
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:get_queried_object_id();
@@ -57,7 +59,7 @@ elseif (in_category(138)){
 		bcn_display();
 	} echo"</div>";
 	echo '<div class="questions">';
-	$my_query = new WP_Query("cat=138&paged=$page");
+	$my_query = new WP_Query("cat=138&paged=$page&posts_per_page=10");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
