@@ -414,8 +414,11 @@ function dito_getCategoryId()
 {
 	foreach( (get_the_category() ) as $category) 
 	{
-		$catName =  $category->cat_ID;
+		if($category->cat_ID != 64)
+		{
+			$catName =  $category->cat_ID;
+			echo $catName . "<br />";
+		}
 	}
-	return $catName;
 }
 ?>

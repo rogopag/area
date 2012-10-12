@@ -1,4 +1,7 @@
 <?php
+
+//dito_getCategoryId();
+
 if(is_page_template('videos.php')):
 ?> 
 <div id="videoSidebar" class="videoSidebar">
@@ -343,6 +346,10 @@ echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;">
 //	endif;
 
 }
+elseif( is_category("138") )
+{
+	do_action('do_diario_sidebar');
+}
 elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (in_category("141")) || /*(in_category("138")) ||*/ (is_category("44")) || (is_category("55")) || (is_category("137")) || (is_category("141")) /*|| (is_category("138")) */)
 {
 	echo '<h2 class="blue">Interviste</h2>';
@@ -369,7 +376,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	if( !is_category(141) )
 	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link( 141 ).'" class="segnala">Tutte le interviste</a></p></div>';
 	
-	echo '<h2 class="blue secondLine">Recensioni</h2>';
+	/*echo '<h2 class="blue secondLine">Recensioni</h2>';
 	$my_query = new WP_Query("cat=44&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	if ($post->ID == $do_not_duplicate) {
@@ -390,6 +397,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	}
 	endwhile;
 	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=44" class="segnala">Tutte le recensioni</a></p></div>';
+	*/
 	echo '<h2 class="blue secondLine">Studi e ricerche</h2>';
 	$my_query = new WP_Query("cat=55&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
@@ -407,7 +415,7 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 	endwhile;
 
 	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="'.get_category_link( 55 ).'" class="segnala">Tutte le pubblicazioni</a></p></div>';
-	echo '<h2 class="blue secondLine">Diario di Di.To</h2>';
+	/*echo '<h2 class="blue secondLine">Diario di Di.To</h2>';
 	$my_query = new WP_Query("cat=138&showposts=2");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	update_post_caches($posts);
@@ -423,12 +431,8 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 
 	endwhile;
 
-	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=138" class="segnala">Tutto il Diario</a></p></div>';
+	echo '<div class="boxes" style="padding-top:15px;text-align:right;float:right;"> <p class="segnala2"><a href="http://dito.areato.org/home/?cat=138" class="segnala">Tutto il Diario</a></p></div>';*/
 
-}
-elseif( is_category("138") )
-{
-	do_action('do_diario_sidebar');
 }
 /////////PERCORSI AND GENERIC SINGLE POST OR CAT//////////////////////////////////////////////
 

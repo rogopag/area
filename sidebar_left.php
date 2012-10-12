@@ -3,6 +3,7 @@
 global $wp, $post, $wp_query;
 
 $currentCategory = isset($_GET['cat'])?$_GET['cat']:get_queried_object_id();
+$page = ( $wp_query->query_vars['paged'] ) ? $wp_query->query_vars['paged'] : 1;
 ///FRONT PAGE
 if (is_front_page ()) {
 	do_action ( "sidebar_left_home_first_box" );
@@ -35,7 +36,7 @@ elseif (in_category(55) || is_category(55)){
 		bcn_display();
 	} echo"</div>";
 	echo '<div class="questions">';
-	$my_query = new WP_Query("cat=55");
+	$my_query = new WP_Query("cat=55&paged=$page");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
@@ -56,7 +57,7 @@ elseif (in_category(138)){
 		bcn_display();
 	} echo"</div>";
 	echo '<div class="questions">';
-	$my_query = new WP_Query("cat=138");
+	$my_query = new WP_Query("cat=138&paged=$page");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
@@ -76,7 +77,7 @@ elseif (in_category(44)){
 		bcn_display();
 	} echo"</div>";
 	echo '<div class="questions">';
-	$my_query = new WP_Query("cat=44");
+	$my_query = new WP_Query("cat=44&paged=$page");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
@@ -95,7 +96,7 @@ elseif (in_category(141)){
 		bcn_display();
 	} echo"</div>";
 	echo '<div class="questions">';
-	$my_query = new WP_Query("cat=141");
+	$my_query = new WP_Query("cat=141&paged=$page");
 	while ($my_query->have_posts()) : $my_query->the_post();
 	echo '<p><a href="'.get_permalink($post->ID).'">';
 	the_title();
@@ -146,7 +147,6 @@ elseif ((is_category()) || (is_page_template('map.php')) || is_page(82) || is_pa
 			}
 			else 
 			{
-				$page = ( $wp_query->query_vars['paged'] ) ? $wp_query->query_vars['paged'] : 1;
 				$my_query = new WP_Query("cat=$catName&paged=$page");
 			}
 			while ($my_query->have_posts()) : $my_query->the_post();
