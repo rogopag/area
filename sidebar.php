@@ -58,8 +58,10 @@ if (is_search() || is_page(3) || is_page("124")){
 	echo'</div>';
 	
 	
-	echo '<div class="halfBox bluesmall newlettersubscription"><a href="'.get_bloginfo('url').'/wp-login.php?action=register">Iscriviti alla Newsletter</a></div>';
-	
+	//echo '<div class="halfBox bluesmall newlettersubscription"><a href="'.get_bloginfo('url').'/wp-login.php?action=register">Iscriviti alla Newsletter</a></div>';
+	echo '<div class="bluesmall newlettersubscription">';
+	newsLetterForm();
+	echo '</div>';
 	
 	echo '<div class="boxesBox"><h2 class="blue secondLine"><a href="'.get_permalink(86).'" class="title-link">Eventi</a></h2></div>';
 	echo '<div id="cWrap">';

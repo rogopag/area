@@ -28,13 +28,14 @@ if ( function_exists('register_sidebar') )
         'after_title' => '</h2>',
     ));
 function newsLetterForm(){
-		$html = '<div id="ajaxNewsletter">';
-		$html .= '<form action="http://dito.areato.org/home/index.php" method="post" name="ARGWA" id="newsletterForm">';
+		
+		$html .= '<form action="'.get_bloginfo('url').'" method="post" name="ARGWA" id="newsletterForm">';
+		$html .= '<label>Iscriviti alla Newsletter</label>';
 		$html .= '<input type="text" name="email" value="Inserisci la tua mail" class="newsletterTextInput" />';
-		$html .= '<input class="submitNewsletter" type="image" name="Add" src="http://dito.areato.org/wp-content/themes/area/imgs/search.gif" />';
+		$html .= '<input class="submitNewsletter" type="image" name="Add" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/search.gif" />';
 		$html .= '<input type="hidden" name="act" value="s_add" />';
 		$html .= '<input type="hidden" name="listid" value="1" /></form>';
-		$html .= '</div>';
+		
 		echo $html;
 	}
 if( !function_exists('displayLinks') )
