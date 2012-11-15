@@ -29,7 +29,7 @@ if ( function_exists('register_sidebar') )
     ));
 function newsLetterForm(){
 		
-		$html .= '<form action="'.$_SERVER['PHP_SELF'].'" method="post" name="ARGWA" id="newsletterForm">';
+		$html .= '<form action="'.get_bloginfo('url').'?page_id=3" method="post" name="ARGWA" id="newsletterForm">';
 		$html .= '<label>Iscriviti alla Newsletter</label>';
 		$html .= '<input type="text" name="email" value="Inserisci la tua mail" class="newsletterTextInput" />';
 		$html .= '<input class="submitNewsletter" type="image" name="Add" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/search.gif" />';
