@@ -27,7 +27,8 @@ li.widget_tubepress h2{padding-top:14px;}
 ul.videoWidget li.widget_tubepress div.tubepress_sidebar{padding-top:12px;}
 .tubepress_container{margin-bottom:0;}
 /*NEWSLETTER*/
-div.newlettersubscription{position:relative;border:none;text-align:right;margin:0;padding:6px 0 2px 0;font-family:Trebuchet MS;font-weight:bold;font-size:12px;}
+div.newlettersubscription{position:relative;border:none;text-align:right;margin:0;padding:6px 0 2px 0;font-family:Trebuchet MS;font-weight:bold;font-size:12px;float:left;}
 .newsletterTextInput{height:14px;width:203px;}
 div.questions{top:60px;}
 .padding-bottom-doubled{padding-bottom:18px;}
+div#videoSidebar ul.videoWidget li#argwa-2{display:none;}
