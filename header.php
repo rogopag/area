@@ -46,6 +46,11 @@ if ($SF)
 ?>
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+<script type="text/javascript">
+var DitoFront = {
+	site_url:"<?php bloginfo('url'); ?>"
+}
+</script>
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.js"></script>
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/pngfix.js"></script>
 <script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/utils.js"></script>
@@ -71,6 +76,7 @@ if ((is_category('43')) || (is_category('42')) || (is_category('47')) || (is_cat
 <script type="text/javascript" >
 logoDown = true;
 </script>
+
 <?php
 } if (in_category('34') || in_category('35')){?>
 <script type="text/javascript">
@@ -78,6 +84,7 @@ var annunciSingle = true;
 </script>
 <?php 
 }
+
 wp_head(); ?>
 </head>
 <body>
