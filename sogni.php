@@ -27,7 +27,7 @@ Template name:sogni
 				<div class="entry story" style="display:none">
 				<h3>Sullo scaffale</h3>
 				<?php 
-				$my_query = new WP_Query("cat=47=&showposts=1");
+				$my_query = new WP_Query("cat=47=&showposts=1&order=ASC&paged=".get_query_var( 'paged' ) );
                 while ($my_query->have_posts()) : $my_query->the_post(); 
                 $do_not_duplicate = $post->ID;
 				$author = get_post_meta($post->ID, "Author Name", $single=true);
