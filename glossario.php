@@ -5,7 +5,9 @@ Template Name: glossario
 ?>
 
 
-<?php get_header(); 
+<?php 
+get_header();
+query_posts("cat=45&orderby=title&order=ASC"); 
 ?>
 
 	<div id="content">
@@ -16,8 +18,8 @@ Template Name: glossario
 				
 				</h2>
 		<?php 
-		$glQuery = new WP_Query("cat=45&orderby=title&order=ASC");
-		while ($glQuery->have_posts()) : $glQuery->the_post();
+		//$glQuery = new WP_Query("cat=45&orderby=title&order=ASC");
+		while (have_posts()) : the_post();
 	
 		?>
 		
@@ -32,12 +34,9 @@ Template Name: glossario
 		
 <?php endwhile;?>
 		
-
+		<?php twentyeleven_content_nav( 'nav-below' ); ?>
+		
 		</div>
-		
-	
-		
-
 	
 
 	
