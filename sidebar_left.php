@@ -131,26 +131,28 @@ elseif ((is_category()) || (is_page_template('map.php')) || is_page(82) || is_pa
 		}
 		else {
 			foreach( (get_the_category() ) as $category) {
-				if($category->cat_ID != 64){
-				$catName =  $category->cat_ID;
-				//  echo $catName;
+				if( $category->cat_ID != 64 && $category->cat_ID != 1 ){
+					$catName =  $category->cat_ID;
 				}
 			}
 		}
-		if(!is_page(124))
+		if( !is_page(124) )
 		{
-			if(is_page(357))
+			if( $post && $post->post_name == 'cosa-vuol-dire' )
 			{
-				$my_query = new WP_Query("cat=$catName&orderby=title&order=asc");
+				
+				$my_query = new WP_Query("cat=45&orderby=title&order=asc&post_status=publish");
 			}
 			
-			elseif( array('3','4','5','6','7','8') )
+			elseif( is_category( array('3','4','5','6','7','8') ) )
 			{
-				$my_query = new WP_Query("cat=$catName&nopaging=true&posts_per_page=-1");
+				
+				$my_query = new WP_Query("cat=$catName&nopaging=true&posts_per_page=-1&post_status=publish");
 			}
 			else 
 			{
-				$my_query = new WP_Query("cat=$catName&paged=$page");
+				
+				$my_query = new WP_Query("post_status=publish&cat=$catName&paged=$page");
 			}
 			
 			while ($my_query->have_posts()) : $my_query->the_post();
