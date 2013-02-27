@@ -291,7 +291,7 @@ if( !function_exists('show_template') )
 	    echo basename($template);
 	}
 }
-function ditoDoExerpt()
+function ditoDoExerpt( $length = 150 )
 {
 	//make sure add this plugin shit doesn't bother
 	if (function_exists ( 'addthis_init' )) {
@@ -299,7 +299,7 @@ function ditoDoExerpt()
 		remove_filter ( 'get_the_excerpt', 'addthis_display_social_widget_excerpt', 11 );
 	}
 	if( function_exists('the_advanced_excerpt') )
-		the_advanced_excerpt('length=150&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
+		the_advanced_excerpt('length='.$length.'&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
 }
 //removes empty tags from the_content
 if( !function_exists('remove_empty_p') )

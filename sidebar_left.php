@@ -143,14 +143,16 @@ elseif ((is_category()) || (is_page_template('map.php')) || is_page(82) || is_pa
 			{
 				$my_query = new WP_Query("cat=$catName&orderby=title&order=asc");
 			}
-			elseif( is_category(array('servizi') ) )
+			
+			elseif( array('3','4','5','6','7','8') )
 			{
-				$my_query = new WP_Query("cat=$catName&nopaging=true");
+				$my_query = new WP_Query("cat=$catName&nopaging=true&posts_per_page=-1");
 			}
 			else 
 			{
 				$my_query = new WP_Query("cat=$catName&paged=$page");
 			}
+			
 			while ($my_query->have_posts()) : $my_query->the_post();
 			echo '<p><a href="'.get_permalink($post->ID).'">';
 			the_title();

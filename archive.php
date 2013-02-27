@@ -1,7 +1,7 @@
 <?php 
 get_header();
 if(!$wp_query) global $wp_query;
-if( is_category( array('servizi') ) )
+if( is_category( array('3','4','5','6','7','8') ) )
 query_posts( array_merge( array( 'posts_per_page' => 50 ) , $wp_query->query ) ); 
 ?>
 
@@ -25,7 +25,7 @@ single_cat_title();
 }
 ?></h2>
  	  <?php /* If this is a tag archive */  
- 	      foreach((get_the_category()) as $category) {
+ 	      foreach( (get_the_category() ) as $category) {
  	      	if($category->cat_name != 'Percorsi in evidenza'){
                 $catName =  $category->cat_name; 
                 // echo $catName;
@@ -102,11 +102,14 @@ if (is_category('47') || is_category('50')){
 					the_content();
 					}
                     elseif (is_category('54') ||  is_category('56')  ||  is_category('57')  ||  is_category('58')  ||  is_category('59')  ||  is_category('60') ||  is_category('61') || is_category('47') || is_category(141) || is_category(55) || is_category(44) || is_category(138))	{
-                    the_excerpt();
-                    } elseif(is_category('4')) {
-                    
-                    } else {
-                    the_content(); 
+                    	the_excerpt();
+                    } 
+                    elseif( is_category('4') || is_category('3') || is_category('5') || is_category('6') || is_category('7') || is_category('8'))
+                    {
+                    	ditoDoExerpt(30);
+                    }
+                    else {
+	                    the_content(); 
                     }
                     ?>
               <?php if(!in_category(4) || !in_category(141) || !in_category(44) || !in_category(55) || !in_category(138)){?>  
