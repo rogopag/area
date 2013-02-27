@@ -1,6 +1,6 @@
 <?php
 $cat = get_queried_object_id();
-query_posts( 'cat='.$cat.'&posts_per_page=10' );
+query_posts( 'cat='.$cat.'&posts_per_page=10&paged='.get_query_var( 'paged' ) );
 get_header(); ?>
 
 	<div id="content">
