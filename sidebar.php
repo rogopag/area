@@ -187,8 +187,8 @@ if (is_search() || is_page(3) || is_page("124")){
 
 			echo '<p class="segnala2"><a href="'.get_bloginfo('url').'/?page_id=357" class="segnala">Tutti i cosa vuol dire</a></p></div></div>';
 		}
-
-		displayLinks( $myCat, $class='halfBox', $close = '</div>' );
+		$c = wp_get_object_terms( get_queried_object_id(), 'category');
+		displayLinks( ( $myCat ) ? $myCat : $c[0]->term_id, $class='halfBox', $close = '</div>' );
 		
 	}
 } elseif(in_category(51) || in_category(51) || in_category(53) ){
@@ -432,7 +432,9 @@ elseif ((in_category("44")) || (in_category("55")) || (in_category("137")) || (i
 
 elseif ((is_category())  && (!is_category('43')) && (!is_category('137')) && (!is_category('138')) && (!is_category('141')) && (!is_category('47')) && (!is_category('50')) && (!is_category('142')) && (!is_category('44')) && (!is_category('54')) && (!is_category('55')) && (!is_category('56')) && (!is_category('57')) && (!is_category('45')) && (!is_category('58')) && (!is_category('59')) && (!is_category('60')) && (!is_category('61'))|| (is_single()) && (!in_category('42')) && (!in_category('43'))  && (!in_category('34')) && (!in_category('35')) && (!in_category('54')) &&(!in_category('9')) && (!in_category('49')) && (!in_category('44')) && (!in_category('48')) &&(!in_category('47')) && (!in_category('50')) && (!in_category('55')) && (!in_category('56')) && (!in_category('57')) && (!in_category('58')) && (!in_category('59')) && (!in_category('60')) && (!in_category('61')) && (!in_category('12')) && (!in_category('62')) && (!in_category('51')) && (!in_category('137')) && (!in_category('141')) && (!in_category('138')) && (!in_category('51')) && (!in_category('53')) && (!in_category('podcast')) && (!in_category('45')) && (!in_category('142')) && (!in_category('63'))|| (is_page_template('map.php')) && (!is_page_template('videos.php')) && (!is_page(357))){
 	
-	displayLinks( get_queried_object_id() );
+	$c = wp_get_object_terms( get_queried_object_id(), 'category');
+	
+	displayLinks( is_single() ? $c[0]->term_id : get_queried_object_id() );
 	
 	
 	if(!is_page_template('map.php')){

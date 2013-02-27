@@ -41,7 +41,7 @@ function newsLetterForm(){
 if( !function_exists('displayLinks') )
 {
 	function displayLinks( $cat, $class='boxesBox', $close = '', $limit = 10 )
-	{
+	{		
 			//get the links and store it in an array
 			$b = get_bookmarks('category='.$cat.'&orderby=id&order=DESC&limit='.$limit);
 			$html .= '<div class="'.$class.'"><h2 class="blue">Link</h2>';
