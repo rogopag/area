@@ -51,7 +51,7 @@ if( !function_exists('displayLinks') )
 			for($i=0;$i<5;$i++)
 			{
 				$html .= '<li>';
-				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'">'.$b[$i]->link_name.'</a>';
+				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'" target="_blank">'.$b[$i]->link_name.'</a>';
 				$html .= '</li>';
 			} 
 			$html .= '</ul>';
@@ -61,7 +61,7 @@ if( !function_exists('displayLinks') )
 			for($i=5;$i<10;$i++)
 			{
 				$html .= '<li>';
-				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'">'.$b[$i]->link_name.'</a>';
+				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'" target="_blank">'.$b[$i]->link_name.'</a>';
 				$html .= '</li>';
 			} 
 			$html .= '</ul>';
