@@ -103,6 +103,9 @@ function elScroll(){
         var container_Scrl = $('#content').offset({scroll:false});
 		var fm_Scrl = $('.questions').offset({scroll:false});
 		
+		
+		console.log( container_Scrl.height() );
+		
 		var amountToTop = pageScrl-0-container_Scrl.scrollTop();
 		
 		if ( $("#maptxt").is("div") )
