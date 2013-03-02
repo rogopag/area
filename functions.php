@@ -466,11 +466,11 @@ if(!function_exists('dito_query_control') )
 		global $pagenow;
 		$qv = &$query->query_vars;
 		///fooo
-		if( $pagenow=='edit.php' && isset($qv['cat']) && is_numeric($qv['cat']) ) {
+		if( $pagenow=='edit.php' && isset($_GET['cat']) && is_numeric($_GET['cat']) ) {
 			print_r( $qv ); 
 			
 			echo '<br>______________________________<br>';
-			$term = get_term_by('id',$qv['cat'],'category');
+			$term = get_term_by('id',$_GET['cat'],'category');
 			$qv['category_name'] = $term->slug;
 			unset( $qv['cat'] );
 			print_r( $qv );
