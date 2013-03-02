@@ -465,7 +465,7 @@ if(!function_exists('dito_query_control') )
 	function convert_your_taxonomy_id_to_taxonomy_term_in_query($query) {
 		global $pagenow;
 		$qv = &$query->query_vars;
-		
+		///fooo
 		if( $pagenow=='edit.php' && isset($qv['cat']) && is_numeric($qv['cat']) ) {
 			print_r( $qv ); 
 			
