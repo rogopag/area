@@ -465,11 +465,13 @@ if(!function_exists('dito_query_control') )
 	function convert_your_taxonomy_id_to_taxonomy_term_in_query($query) {
 		global $pagenow;
 		$qv = &$query->query_vars;
-		if( $pagenow=='edit.php' && isset($qv['your_taxonomy']) && is_numeric($qv['your_taxonomy']) ) {
-			$term = get_term_by('id',$qv['your_taxonomy'],'your_taxonomy');
-			$qv['your_taxonomy'] = $term->slug;
+		if( $pagenow=='edit.php' && isset($qv['cat']) && is_numeric($qv['cat']) ) {
+			$term = get_term_by('id',$qv['cat'],'category');
+			$qv['category_name'] = $term->slug;
+			unset( $qv['cat'] );
 		}
 	}
+	
 	add_filter('parse_query','convert_your_taxonomy_id_to_taxonomy_term_in_query');
 }
 //bla bla bla
