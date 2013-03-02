@@ -465,18 +465,13 @@ if(!function_exists('dito_query_control') )
 	function convert_your_taxonomy_id_to_taxonomy_term_in_query($query) {
 		global $pagenow;
 		$qv = &$query->query_vars;
-		///fooo
-		if( $pagenow=='edit.php' && isset($_GET['cat']) && is_numeric($_GET['cat']) ) {
-			print_r( $qv ); 
-			
-			echo '<br>______________________________<br>';
+		
+		if( $pagenow=='edit.php' && isset($_GET['cat']) && is_numeric($_GET['cat']) ) {	
 			$term = get_term_by('id',$_GET['cat'],'category');
 			$qv['category_name'] = $term->slug;
-			unset( $qv['cat'] );
-			print_r( $qv );
-			echo '_______________________________________________';
+			$qv['cat'] = $_GET['cat'];
 		}
-		print_r( $query );
+		
 		return $query;
 	}
 	
