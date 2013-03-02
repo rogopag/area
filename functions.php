@@ -129,7 +129,9 @@ if( !function_exists('grabGlossaryTerms') )
 }
 function my_login_stylesheet() {
 	 ?>
-    <link rel="stylesheet" id="custom_wp_admin_css"  href="<?php echo get_bloginfo( 'stylesheet_directory' ) . '/style-login.css'; ?>" type="text/css" media="all" />
+<link rel="stylesheet" id="custom_wp_admin_css"
+	href="<?php echo get_bloginfo( 'stylesheet_directory' ) . '/style-login.css'; ?>"
+	type="text/css" media="all" />
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 function change_wp_login_url() 
@@ -273,11 +275,12 @@ function twentyeleven_content_nav( $nav_id ) {
 	global $wp_query;
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
-		<nav id="<?php echo $nav_id; ?>">
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Precedenti', 'twentyeleven' ) ); ?></div>
-			<div class="nav-next"><?php previous_posts_link( __( 'Successivi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
-		</nav><!-- #nav-above -->
-	<?php endif;
+<nav id="<?php echo $nav_id; ?>">
+<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Precedenti', 'twentyeleven' ) ); ?></div>
+<div class="nav-next"><?php previous_posts_link( __( 'Successivi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
+</nav>
+<!-- #nav-above -->
+<?php endif;
 }
 endif; // twentyeleven_content_nav
 add_theme_support( 'post-thumbnails' );
@@ -448,7 +451,7 @@ function pippin_excerpt_by_id($post, $length = 10, $tags = '<a><em><strong>', $e
 }
 if(!function_exists('dito_query_control') )
 {
-add_action( 'admin_init', 'possibly_add_exclude_filter' );
+/*add_action( 'admin_init', 'possibly_add_exclude_filter' );
 	function possibly_add_exclude_filter() {
 	    global $pagenow, $typenow;
 	    if( 'edit.php' == $pagenow && '' == $typenow ) 
@@ -456,9 +459,18 @@ add_action( 'admin_init', 'possibly_add_exclude_filter' );
 	}
 	function set_viewable_posts_by_cat($q) {
 		  
-	      set_query_var('category_in', array($_GET['cat']) );
+	      set_query_var('category_in', array(1) );
 	      return;
+	}*/
+	function convert_your_taxonomy_id_to_taxonomy_term_in_query($query) {
+		global $pagenow;
+		$qv = &$query->query_vars;
+		if( $pagenow=='edit.php' && isset($qv['your_taxonomy']) && is_numeric($qv['your_taxonomy']) ) {
+			$term = get_term_by('id',$qv['your_taxonomy'],'your_taxonomy');
+			$qv['your_taxonomy'] = $term->slug;
+		}
 	}
+	add_filter('parse_query','convert_your_taxonomy_id_to_taxonomy_term_in_query');
 }
 //bla bla bla
 ?>
