@@ -446,4 +446,18 @@ function pippin_excerpt_by_id($post, $length = 10, $tags = '<a><em><strong>', $e
  
 	return apply_filters('the_content', $the_excerpt);
 }
+if(!function_exists('dito_query_control') )
+{
+add_action( 'admin_init', 'possibly_add_exclude_filter' );
+	function possibly_add_exclude_filter() {
+	    global $pagenow, $typenow;
+	    if( 'edit.php' == $pagenow && '' == $typenow ) 
+	        add_action( 'parse_query', 'set_viewable_posts_by_cat', 1 );
+	}
+	function set_viewable_posts_by_cat($q) {
+		  
+	      set_query_var('category_in', array($_GET['cat']) );
+	      return;
+	}
+}
 ?>
