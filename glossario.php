@@ -5,19 +5,24 @@ Template Name: glossario
 ?>
 
 
-<?php get_header(); 
+<?php 
+get_header();
+query_posts("cat=45&orderby=title&order=ASC&paged=".get_query_var( 'paged' )); 
 ?>
 
-	<div id="content">
+<div id="content">
+
 <?php include('sidebar_left.php');?>
+
 <div class="main">
+
 	
-<h2 class="orange specialOrangeIE"> Cosa vuol dire
-				
-				</h2>
+<h2 class="orange specialOrangeIE"> Cosa vuol dire</h2>
+	
+
 		<?php 
-		$glQuery = new WP_Query("cat=45&orderby=title&order=ASC");
-		while ($glQuery->have_posts()) : $glQuery->the_post();
+		//$glQuery = new WP_Query("cat=45&orderby=title&order=ASC");
+		while (have_posts()) : the_post();
 	
 		?>
 		
@@ -26,18 +31,16 @@ Template Name: glossario
 				
 
 				<div class="entry">
-					<?php the_content(); ?>
+					<?php //the_content(); 
+					ditoDoExerpt(100);?>
 				</div>
 
 		
 <?php endwhile;?>
 		
-
+		<?php twentyeleven_content_nav( 'nav-below' ); ?>
+		
 		</div>
-		
-	
-		
-
 	
 
 	
