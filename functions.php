@@ -28,19 +28,20 @@ if ( function_exists('register_sidebar') )
         'after_title' => '</h2>',
     ));
 function newsLetterForm(){
-		$html = '<div id="ajaxNewsletter">';
-		$html .= '<form action="http://dito.areato.org/home/index.php" method="post" name="ARGWA" id="newsletterForm">';
+		
+		$html .= '<form action="'.get_bloginfo('url').'/conferma-iscrizione/" method="post" name="ARGWA" id="newsletterForm">';
+		$html .= '<label>Iscriviti alla Newsletter</label>';
 		$html .= '<input type="text" name="email" value="Inserisci la tua mail" class="newsletterTextInput" />';
-		$html .= '<input class="submitNewsletter" type="image" name="Add" src="http://dito.areato.org/wp-content/themes/area/imgs/search.gif" />';
+		$html .= '<input class="submitNewsletter" type="image" name="Add" src="'.get_bloginfo('url').'/wp-content/themes/area/imgs/search.gif" />';
 		$html .= '<input type="hidden" name="act" value="s_add" />';
 		$html .= '<input type="hidden" name="listid" value="1" /></form>';
-		$html .= '</div>';
+		
 		echo $html;
 	}
 if( !function_exists('displayLinks') )
 {
 	function displayLinks( $cat, $class='boxesBox', $close = '', $limit = 10 )
-	{
+	{		
 			//get the links and store it in an array
 			$b = get_bookmarks('category='.$cat.'&orderby=id&order=DESC&limit='.$limit);
 			$html .= '<div class="'.$class.'"><h2 class="blue">Link</h2>';
@@ -50,7 +51,7 @@ if( !function_exists('displayLinks') )
 			for($i=0;$i<5;$i++)
 			{
 				$html .= '<li>';
-				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'">'.$b[$i]->link_name.'</a>';
+				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'" target="_blank">'.$b[$i]->link_name.'</a>';
 				$html .= '</li>';
 			} 
 			$html .= '</ul>';
@@ -60,7 +61,7 @@ if( !function_exists('displayLinks') )
 			for($i=5;$i<10;$i++)
 			{
 				$html .= '<li>';
-				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'">'.$b[$i]->link_name.'</a>';
+				$html .= '<a href="'.$b[$i]->link_url.'" title="'.$b[$i]->link_name.'" target="_blank">'.$b[$i]->link_name.'</a>';
 				$html .= '</li>';
 			} 
 			$html .= '</ul>';
@@ -128,7 +129,9 @@ if( !function_exists('grabGlossaryTerms') )
 }
 function my_login_stylesheet() {
 	 ?>
-    <link rel="stylesheet" id="custom_wp_admin_css"  href="<?php echo get_bloginfo( 'stylesheet_directory' ) . '/style-login.css'; ?>" type="text/css" media="all" />
+<link rel="stylesheet" id="custom_wp_admin_css"
+	href="<?php echo get_bloginfo( 'stylesheet_directory' ) . '/style-login.css'; ?>"
+	type="text/css" media="all" />
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 function change_wp_login_url() 
@@ -272,11 +275,12 @@ function twentyeleven_content_nav( $nav_id ) {
 	global $wp_query;
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
-		<nav id="<?php echo $nav_id; ?>">
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Precedenti', 'twentyeleven' ) ); ?></div>
-			<div class="nav-next"><?php previous_posts_link( __( 'Successivi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
-		</nav><!-- #nav-above -->
-	<?php endif;
+<nav id="<?php echo $nav_id; ?>">
+<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Precedenti', 'twentyeleven' ) ); ?></div>
+<div class="nav-next"><?php previous_posts_link( __( 'Successivi <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
+</nav>
+<!-- #nav-above -->
+<?php endif;
 }
 endif; // twentyeleven_content_nav
 add_theme_support( 'post-thumbnails' );
@@ -290,7 +294,7 @@ if( !function_exists('show_template') )
 	    echo basename($template);
 	}
 }
-function ditoDoExerpt()
+function ditoDoExerpt( $length = 150 )
 {
 	//make sure add this plugin shit doesn't bother
 	if (function_exists ( 'addthis_init' )) {
@@ -298,7 +302,7 @@ function ditoDoExerpt()
 		remove_filter ( 'get_the_excerpt', 'addthis_display_social_widget_excerpt', 11 );
 	}
 	if( function_exists('the_advanced_excerpt') )
-		the_advanced_excerpt('length=150&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
+		the_advanced_excerpt('length='.$length.'&use_words=0&no_custom=1&ellipsis=%26hellip;&exclude_tags=img&read_more=[Leggi tutto]&add_link=1&finish_sentence=0&finish_word=1&no_shortcode=1');
 }
 //removes empty tags from the_content
 if( !function_exists('remove_empty_p') )
@@ -421,4 +425,48 @@ function dito_getCategoryId()
 		}
 	}
 }
+function pippin_excerpt_by_id($post, $length = 10, $tags = '<a><em><strong>', $extra = ' [Leggi tutto]') {
+ 
+	if(is_int($post)) {
+		// get the post object of the passed ID
+		$post = get_post($post);
+	} elseif(!is_object($post)) {
+		return false;
+	}
+ 
+	if(has_excerpt($post->ID)) {
+		$the_excerpt = $post->post_excerpt;
+		return apply_filters('the_content', $the_excerpt);
+	} else {
+		$the_excerpt = $post->post_content;
+	}
+	
+	$the_excerpt = strip_shortcodes(strip_tags($the_excerpt), $tags);
+	$the_excerpt = preg_split('/\b/', $the_excerpt, $length * 2+1);
+	$excerpt_waste = array_pop($the_excerpt);
+	$the_excerpt = implode($the_excerpt);
+	$the_excerpt .= ' ...<a href="'.get_permalink($post->ID).'">'.$extra.'</a>';
+ 
+	return apply_filters('the_content', $the_excerpt);
+}
+if(!function_exists('dito_query_control') )
+{
+	function convert_your_taxonomy_id_to_taxonomy_term_in_query($query) {
+		global $pagenow;
+		$qv = &$query->query_vars;
+		if( $pagenow=='edit.php' && isset($_GET['cat']) && is_numeric($_GET['cat']) ) {	
+			$term = get_term_by('id',$_GET['cat'],'category');
+			$qv['category_name'] = $term->slug;
+		}
+		
+		return $query;
+	}
+	add_filter('parse_query','convert_your_taxonomy_id_to_taxonomy_term_in_query');
+	function dito_post_request($q)
+	{
+		return $q;
+	}
+	add_filter('posts_request', 'dito_post_request');
+}
+//bla bla bla
 ?>

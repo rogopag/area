@@ -1,6 +1,7 @@
 var mapReset = false;
 var logoDown = false;
 var annunciSingle = false;
+var DitoFront;
 $(document).ready(function(){
 	if($(".linkcat").is('li'))
 	{
@@ -101,6 +102,9 @@ function elScroll(){
         var pageScrl = $(document).scrollTop();
         var container_Scrl = $('#content').offset({scroll:false});
 		var fm_Scrl = $('.questions').offset({scroll:false});
+		
+		
+		console.log( container_Scrl.height() );
 		
 		var amountToTop = pageScrl-0-container_Scrl.scrollTop();
 		
@@ -496,9 +500,10 @@ $('.closeFull').click(function(){
 	});
 };
 function homeImgSwap(){
-var imgURL = "/wp-content/uploads/homepics/pic_";
+var imgURL = DitoFront.site_url+"/wp-content/uploads/homepics/pic_";
 	var rand_no = Math.floor((10-4)*Math.random()) + 5;
 	rand_no = 7;
+	console.log( imgURL );
 	$('.homeFirst').find('img').attr({src:""+imgURL+rand_no+".jpg"});
 };
 function logoPositionControl(){
