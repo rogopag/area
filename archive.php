@@ -75,12 +75,12 @@ if (is_category('47') || is_category('50')){
 			
 			<?php if (is_category('47')){?>
 			<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro"><a href="<?php the_permalink() ?>" rel="bookmark">
-			<em><?php the_title(); ?></em></a></h3>	<a href="<?php echo $taleAuthor->guid;?>" class="authorLink authorArchive"> <?php echo $author;?></a>
+			<em><?php the_title(); ?></em></a></h3>	<a href="<?php echo get_permalink($taleAuthor->ID);?>" class="authorLink authorArchive"> <?php echo $author;?></a>
 			     
 				
 				
 				<?php } elseif(is_category('50')) {?>
-				<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro marginBottom"><a href="<?php echo $taleAuthor->guid;?>"> <?php echo $author;?></a></h3>
+				<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro marginBottom"><a href="<?php echo get_permalink($taleAuthor->ID);?>"> <?php echo $author;?></a></h3>
 			
 			<?php }else{ ?>
 			<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
