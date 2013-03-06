@@ -72,7 +72,7 @@ $my_query = new WP_Query("cat=9&showposts=3");
  
  popular_posts('limit=2&output_template=<div class="boxesSecondLine">{link}</div>&divider=');
  
-	 echo '<br /><p class="segnala2" style="position:relative;top:20px;font-size:12px;left:60px;"><a class="segnala" href="http://dito.areato.org/?cat=9">Tutte le news</a></p>';
+	 echo '<br /><p class="segnala2" style="position:relative;top:20px;font-size:12px;left:60px;"><a class="segnala" href="http://dito.areato.org/'.get_category_link(9).'">Tutte le news</a></p>';
 	 echo '</div>';
 	 
 	echo'</div>';

@@ -468,5 +468,31 @@ if(!function_exists('dito_query_control') )
 	}
 	add_filter('posts_request', 'dito_post_request');
 }
+if( !function_exists('dito_fixPermalinks') )
+{
+	add_action('template_redirect','dito_fixPermalinks');
+	function dito_fixPermalinks() {
+		$redirect_to = false;
+
+		if( isset($_REQUEST['p']) )
+		{
+			$redirect_to = get_permalink( $_REQUEST['p'] );
+		}
+		elseif( isset($_REQUEST['cat']) )
+		{
+			$redirect_to = get_category_link( $_REQUEST['cat'] );
+		}
+		elseif( isset($_REQUEST['page_id']) )
+		{
+			$redirect_to = get_permalink( $_REQUEST['page_id'] );
+		}
+
+		if ($redirect_to) {
+			wp_safe_redirect($redirect_to,301);
+			exit();
+		}
+	}
+
+}
 //bla bla bla
 ?>
