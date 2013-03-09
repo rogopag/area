@@ -112,15 +112,21 @@ if (is_category('47') || is_category('50')){
 	                    the_content(); 
                     }
                     ?>
+
+					<?php 
+					 edit_post_link('Edit this entry.', '<p>', '</p>'); 
+					?>
               <?php if(!in_category(4) || !in_category(141) || !in_category(44) || !in_category(55) || !in_category(138)){?>  
 				</div>
+				
+				
 				
 				<?php }?>
 				
 <?php if (!empty($pageContent)) { ?>
 			</div>
 <?php }?>
-
+		
 		<?php endwhile; ?>
 		<?php do_action('dito_printAdditionalContent'); ?>
 		<?php twentyeleven_content_nav( 'nav-below' ); ?>

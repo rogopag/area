@@ -39,7 +39,9 @@ Template name:sogni
 				
 					<?php the_content('Read the rest of this entry &raquo;'); ?>
 				</div>
-
+					<?php 
+					 edit_post_link('Edit this entry.', '<p>', '</p>'); 
+					?>
 			</div>
 
 		<?php endwhile; ?>

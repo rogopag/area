@@ -492,7 +492,6 @@ if( !function_exists('dito_fixPermalinks') )
 			exit();
 		}
 	}
-
 }
 //bla bla bla
 ?>
