@@ -80,7 +80,7 @@ if (is_category('47') || is_category('50')){
 				
 				
 				<?php } elseif(is_category('50')) {?>
-				<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro marginBottom"><a href="<?php echo get_permalink($taleAuthor->ID);?>"> <?php echo $author;?></a></h3>
+				<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro marginBottom"><a href="<?php the_permalink() ?>"> <?php echo $author;?></a></h3>
 			
 			<?php }else{ ?>
 			<h3 id="post-<?php the_ID(); ?>" class="post-title no-intro"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
